@@ -1,0 +1,2327 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>4. Lists &#8212; Python Programming for Math</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/03-lists';</script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Introduction to NumPy and Visualization" href="04-numpy-intro-and-visuzalization.html" />
+    <link rel="prev" title="3. Functions and Control Statements" href="02-functions-control-statements.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-python-4-math.png" class="logo__image only-light" alt="Python Programming for Math - Home"/>
+    <script>document.write(`<img src="../_static/logo-python-4-math.png" class="logo__image only-dark" alt="Python Programming for Math - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00-colab-intro.html">1. Google Colab Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-computing-with-python.html">2. Computing with Python:  an Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-functions-control-statements.html">3. Functions and Control Statements</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-numpy-intro-and-visuzalization.html">5. Introduction to NumPy and Visualization</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ssuzana/python-programming-for-math" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ssuzana/python-programming-for-math/edit/master/_build/html/content/03-lists.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ssuzana/python-programming-for-math/issues/new?title=Issue%20on%20page%20%2Fcontent/03-lists.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/03-lists.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lists</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primality-testing">4.1. Primality testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-manipulation">4.2. List manipulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-terms-and-indices">4.2.1. List terms and indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-slicing">4.2.2. List slicing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-list-slices">4.2.3. Changing list slices</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-methods">4.3. List methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sieve-of-eratosthenes">4.4. Sieve of Eratosthenes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis">4.5. Data analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-the-list-of-primes">4.5.1. Analyzing the list of primes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-prime-counting-function">4.5.2. Analysis of the prime counting function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prime-gaps">4.5.3. Prime gaps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">4.6. Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lists">
+<h1><span class="section-number">4. </span>Lists<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h1>
+<p>Python provides a powerful set of tools to create and manipulate lists of data. In this part, we take a deep dive into the Python list type.  This includes mutability, list methods, and slicing.</p>
+<p>Then we use Python lists to implement and optimize the Sieve of Eratosthenes, which will produce a list of all prime numbers up to a big number (like 10 million) in a snap. Along the way, we introduce some Python techniques for data analysis and visualization.</p>
+<section id="primality-testing">
+<h2><span class="section-number">4.1. </span>Primality testing<a class="headerlink" href="#primality-testing" title="Permalink to this heading">#</a></h2>
+<p>Before diving into lists, we recall the <strong>brute force</strong> primality test that we created in the last lesson.  To test whether a number <code class="docutils literal notranslate"><span class="pre">n</span></code> is prime, we can simply check for factors.  This yields the following primality test.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Checks whether the argument n is a prime number.</span>
+<span class="sd">    Uses a brute force search for factors between 1 and n.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>  <span class="c1"># the range of numbers 2,3,...,n-1.</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="k">j</span> == 0:  # is n divisible by j?
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is a factor of </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also implement this test with a <strong>while loop</strong> instead of a for loop.  This doesn’t make much of a difference, in Python 3.x.  (In Python 2.x, this would save memory).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Checks whether the argument n is a prime number.</span>
+<span class="sd">    Uses a brute force search for factors between 1 and n.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>  <span class="c1"># j will proceed through the list of numbers 2,3,...,n-1.</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="k">j</span> == 0:  # is n divisible by j?
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is a factor of </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># There&#39;s a Python abbreviation for this:  j += 1.</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_prime</span><span class="p">(</span><span class="mi">10001</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>73 is a factor of 10001.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_prime</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>If <span class="math notranslate nohighlight">\(n\)</span> is a prime number, then the <code class="docutils literal notranslate"><span class="pre">is_prime(n)</span></code> function will iterate through all the numbers between <span class="math notranslate nohighlight">\(2\)</span> and <span class="math notranslate nohighlight">\(n-1\)</span>.  But this is overkill!  Indeed, if <span class="math notranslate nohighlight">\(n\)</span> is not prime, it will have a factor between <span class="math notranslate nohighlight">\(2\)</span> and the square root of <span class="math notranslate nohighlight">\(n\)</span>.  This is because factors come in pairs:  if <span class="math notranslate nohighlight">\(ab = n\)</span>, then one of the factors, <span class="math notranslate nohighlight">\(a\)</span> or <span class="math notranslate nohighlight">\(b\)</span>, must be less than or equal to the square root of <span class="math notranslate nohighlight">\(n\)</span>.  So it suffices to search for factors up to (and including) the square root of <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Even though we’ve made our own sqrt function, we load a fast one from the <a class="reference external" href="https://docs.python.org/3/library/math.html">standard math package</a>.  You can use this for square roots, trig functions, logs, and more.  Click the previous link for documentation.  This package doesn’t load automatically when you start Python, so you have to load it with a little Python code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This command <strong>imports</strong> the square root function (<code class="docutils literal notranslate"><span class="pre">sqrt</span></code>) from the <strong>package</strong> called <code class="docutils literal notranslate"><span class="pre">math</span></code>.  Now you can find square roots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31.622776601683793
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are a few different ways to import functions from packages.  The above syntax is a good starting point, but sometimes problems can arise if different packages have functions with the same name.  Here are a few methods of importing the <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> function and how they differ.</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">math</span> <span class="pre">import</span> <span class="pre">sqrt</span></code>:  After this command, <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> will refer to the function from the <code class="docutils literal notranslate"><span class="pre">math</span></code> package (overriding any previous definition).</p>
+<p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code>:  After this command, all the functions from the <code class="docutils literal notranslate"><span class="pre">math</span></code> package will be imported.  But to call <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>, you would type a command like <code class="docutils literal notranslate"><span class="pre">math.sqrt(1000)</span></code>.  This is convenient if there are potential conflicts with other packages.</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">math</span> <span class="pre">import</span> <span class="pre">*</span></code>:  After this command, all the functions from the <code class="docutils literal notranslate"><span class="pre">math</span></code> package will be imported.  To call them, you can access them directly with a command like <code class="docutils literal notranslate"><span class="pre">sqrt(1000)</span></code>.  This can easily cause conflicts with other packages, since packages can have hundreds of functions in them!</p>
+<p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span> <span class="pre">as</span> <span class="pre">mth</span></code>:  Some people like abbreviations.  This imports all the functions from the <code class="docutils literal notranslate"><span class="pre">math</span></code> package.  To call one, you type a command like <code class="docutils literal notranslate"><span class="pre">mth.sqrt(1000)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31.622776601683793
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factorial</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># This will cause an error!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># This will cause an error!</span>
+
+<span class="ne">NameError</span>: name &#39;factorial&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># This is ok, since the math package comes with a function called factorial.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3628800
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s improve our <code class="docutils literal notranslate"><span class="pre">is_prime(n)</span></code> function by searching for factors only up to the square root of the number <code class="docutils literal notranslate"><span class="pre">n</span></code>.  We consider two options.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime_slow</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Checks whether the argument n is a prime number.</span>
+<span class="sd">    Uses a brute force search for factors between 2 and sqrt(n).</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c1"># j will proceed through the list of numbers 2,3,... up to sqrt(n).</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="k">j</span> == 0:  # is n divisible by j?
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is a factor of </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># There&#39;s a Python abbreviation for this:  j += 1.</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime_fast</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Checks whether the argument n is a prime number.</span>
+<span class="sd">    Uses a brute force search for factors between 2 and sqrt(n).</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">root_n</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">root_n</span><span class="p">:</span>  <span class="c1"># j will proceed through the list of numbers 2,3,... up to sqrt(n).</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="k">j</span> == 0:  # is n divisible by j?
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is a factor of </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># There&#39;s a Python abbreviation for this:  j += 1.</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_prime_fast</span><span class="p">(</span><span class="mi">1000003</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_prime_slow</span><span class="p">(</span><span class="mi">1000003</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>I’ve chosen function names with “fast” and “slow” in them.  But what makes them faster or slower?  Are they faster than the original?  And how can we tell?</p>
+<p>Python comes with a great set of tools for these questions.  The simplest (for the user) are the time utilities.  By placing the <strong>magic</strong> <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> before a command, Python does something like the following:</p>
+<ol class="arabic simple">
+<li><p>Python makes a little container in your computer devoted to the computations, to avoid interference from other running programs if possible.</p></li>
+<li><p>Python executes the command lots and lots of times.</p></li>
+<li><p>Python averages the amount of time taken for each execution.</p></li>
+</ol>
+<p>Give it a try below, to compare the speed of the functions <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> (the original) with the new <code class="docutils literal notranslate"><span class="pre">is_prime_fast</span></code> and <code class="docutils literal notranslate"><span class="pre">is_prime_slow</span></code>.  Note that the <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> commands might take a little while.</p>
+<p><em>Warning!</em>  Before running the is_prime_fast and is_prime_slow functions within %timeit, please <em>remove</em> all print statements from the functions and recompile them.  Otherwise, you might end up printing a million things in your browser window, possibly crashing your computer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> is_prime_fast(1000003)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37.3 µs ± 181 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> is_prime_slow(1000003)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58.2 µs ± 1.77 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> is_prime(1000003)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>29.3 ms ± 376 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Time is measured in seconds, milliseconds (1 ms = 1/1000 second), microseconds (1 µs = 1/1,000,000 second), and nanoseconds (1 ns = 1/1,000,000,000 second).  So it might appear at first that <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> is the fastest, or about the same speed.  But check the units!  The other two approaches are about a thousand times faster!  How much faster were they on your computer?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_prime_fast</span><span class="p">(</span><span class="mi">10000000000037</span><span class="p">)</span>  <span class="c1"># Don&#39;t try this with `is_prime` unless you want to wait for a long time!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Indeed, the <code class="docutils literal notranslate"><span class="pre">is_prime_fast(n)</span></code> function will go through a loop of length about <code class="docutils literal notranslate"><span class="pre">sqrt(n)</span></code> when <code class="docutils literal notranslate"><span class="pre">n</span></code> is prime.  But <code class="docutils literal notranslate"><span class="pre">is_prime(n)</span></code> will go through a loop of length about <code class="docutils literal notranslate"><span class="pre">n</span></code>.  Since <code class="docutils literal notranslate"><span class="pre">sqrt(n)</span></code> is much less than <code class="docutils literal notranslate"><span class="pre">n</span></code>, especially when <code class="docutils literal notranslate"><span class="pre">n</span></code> is large, the <code class="docutils literal notranslate"><span class="pre">is_prime_fast(n)</span></code> function is much faster.</p>
+<p>Between <code class="docutils literal notranslate"><span class="pre">is_prime_fast</span></code> and <code class="docutils literal notranslate"><span class="pre">is_prime_slow</span></code>, the difference is that the <code class="docutils literal notranslate"><span class="pre">fast</span></code> version <strong>precomputes</strong> the square root <code class="docutils literal notranslate"><span class="pre">sqrt(n)</span></code> before going through the loop, where the <code class="docutils literal notranslate"><span class="pre">slow</span></code> version repeats the <code class="docutils literal notranslate"><span class="pre">sqrt(n)</span></code> every time the loop is repeated.  Indeed, writing <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">j</span> <span class="pre">&lt;=</span> <span class="pre">sqrt(n):</span></code> suggests that Python might execute <code class="docutils literal notranslate"><span class="pre">sqrt(n)</span></code> every time to check.  This <em>might</em> lead to Python computing the same square root a million times… unnecessarily!</p>
+<p>A basic principle of programming is to <strong>avoid repetition</strong>.  If you have the memory space, just compute once and store the result.  It will probably be faster to pull the result out of memory than to compute it again.</p>
+<p>Python does tend to be pretty smart, however.  It’s possible that Python <strong>is precomputing</strong> <code class="docutils literal notranslate"><span class="pre">sqrt(n)</span></code> even in the slow loop, just because it’s clever enough to tell in advance that the same thing is being computed over and over again.  This depends on your Python version and takes place behind the scenes.  If you want to figure it out, there’s a whole set of tools (for advanced programmers) like the <a class="reference external" href="https://docs.python.org/3/library/dis.html">disassembler</a> to figure out what Python is doing.</p>
+<p>If you feel like looking under the hood, the next few lines will display the <code class="docutils literal notranslate"><span class="pre">is_prime_fast</span></code> and <code class="docutils literal notranslate"><span class="pre">is_prime_slow</span></code> functions to bytecode.  Can you see how the <code class="docutils literal notranslate"><span class="pre">sqrt(n)</span></code> computation is carried out differently?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dis</span> <span class="kn">import</span> <span class="n">dis</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dis</span><span class="p">(</span><span class="n">is_prime_fast</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1           0 RESUME                   0
+
+  6           2 LOAD_CONST               1 (2)
+              4 STORE_FAST               1 (j)
+
+  7           6 LOAD_GLOBAL              1 (NULL + sqrt)
+             18 LOAD_FAST                0 (n)
+             20 PRECALL                  1
+             24 CALL                     1
+             34 STORE_FAST               2 (root_n)
+
+  8          36 LOAD_FAST                1 (j)
+             38 LOAD_FAST                2 (root_n)
+             40 COMPARE_OP               1 (&lt;=)
+             46 POP_JUMP_FORWARD_IF_FALSE    57 (to 162)
+
+  9     &gt;&gt;   48 LOAD_FAST                0 (n)
+             50 LOAD_FAST                1 (j)
+             52 BINARY_OP                6 (%)
+             56 LOAD_CONST               2 (0)
+             58 COMPARE_OP               2 (==)
+             64 POP_JUMP_FORWARD_IF_FALSE    37 (to 140)
+
+ 10          66 LOAD_GLOBAL              3 (NULL + print)
+             78 LOAD_CONST               3 (&#39;{} is a factor of {}.&#39;)
+             80 LOAD_METHOD              2 (format)
+            102 LOAD_FAST                1 (j)
+            104 LOAD_FAST                0 (n)
+            106 PRECALL                  2
+            110 CALL                     2
+            120 PRECALL                  1
+            124 CALL                     1
+            134 POP_TOP
+
+ 11         136 LOAD_CONST               4 (False)
+            138 RETURN_VALUE
+
+ 12     &gt;&gt;  140 LOAD_FAST                1 (j)
+            142 LOAD_CONST               5 (1)
+            144 BINARY_OP                0 (+)
+            148 STORE_FAST               1 (j)
+
+  8         150 LOAD_FAST                1 (j)
+            152 LOAD_FAST                2 (root_n)
+            154 COMPARE_OP               1 (&lt;=)
+            160 POP_JUMP_BACKWARD_IF_TRUE    57 (to 48)
+
+ 13     &gt;&gt;  162 LOAD_CONST               6 (True)
+            164 RETURN_VALUE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dis</span><span class="p">(</span><span class="n">is_prime_slow</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1           0 RESUME                   0
+
+  6           2 LOAD_CONST               1 (2)
+              4 STORE_FAST               1 (j)
+
+  7           6 LOAD_FAST                1 (j)
+              8 LOAD_GLOBAL              1 (NULL + sqrt)
+             20 LOAD_FAST                0 (n)
+             22 PRECALL                  1
+             26 CALL                     1
+             36 COMPARE_OP               1 (&lt;=)
+             42 POP_JUMP_FORWARD_IF_FALSE    70 (to 184)
+
+  8     &gt;&gt;   44 LOAD_FAST                0 (n)
+             46 LOAD_FAST                1 (j)
+             48 BINARY_OP                6 (%)
+             52 LOAD_CONST               2 (0)
+             54 COMPARE_OP               2 (==)
+             60 POP_JUMP_FORWARD_IF_FALSE    37 (to 136)
+
+  9          62 LOAD_GLOBAL              3 (NULL + print)
+             74 LOAD_CONST               3 (&#39;{} is a factor of {}.&#39;)
+             76 LOAD_METHOD              2 (format)
+             98 LOAD_FAST                1 (j)
+            100 LOAD_FAST                0 (n)
+            102 PRECALL                  2
+            106 CALL                     2
+            116 PRECALL                  1
+            120 CALL                     1
+            130 POP_TOP
+
+ 10         132 LOAD_CONST               4 (False)
+            134 RETURN_VALUE
+
+ 11     &gt;&gt;  136 LOAD_FAST                1 (j)
+            138 LOAD_CONST               5 (1)
+            140 BINARY_OP                0 (+)
+            144 STORE_FAST               1 (j)
+
+  7         146 LOAD_FAST                1 (j)
+            148 LOAD_GLOBAL              1 (NULL + sqrt)
+            160 LOAD_FAST                0 (n)
+            162 PRECALL                  1
+            166 CALL                     1
+            176 COMPARE_OP               1 (&lt;=)
+            182 POP_JUMP_BACKWARD_IF_TRUE    70 (to 44)
+
+ 12     &gt;&gt;  184 LOAD_CONST               6 (True)
+            186 RETURN_VALUE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_prime_fast</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">14</span> <span class="o">+</span> <span class="mi">37</span><span class="p">)</span> <span class="c1"># This might get a bit of delay.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1858741 is a factor of 100000000000037.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have a function <code class="docutils literal notranslate"><span class="pre">is_prime_fast(n)</span></code> that is speedy for numbers <code class="docutils literal notranslate"><span class="pre">n</span></code> in the trillions!  You’ll probably start to hit a delay around <span class="math notranslate nohighlight">\(10^{15}\)</span> or so, and the delays will become intolerable if you add too many more digits.  In a future lesson, we will see a different primality test that will be essentially instant even for numbers around <span class="math notranslate nohighlight">\(10^{1000}\)</span>!</p>
+</section>
+<section id="list-manipulation">
+<h2><span class="section-number">4.2. </span>List manipulation<a class="headerlink" href="#list-manipulation" title="Permalink to this heading">#</a></h2>
+<p>We have already (briefly) encountered the <code class="docutils literal notranslate"><span class="pre">list</span></code> type in Python.  Recall that the <code class="docutils literal notranslate"><span class="pre">range</span></code> command produces a range, which can be used to produce a list.  For example, <code class="docutils literal notranslate"><span class="pre">list(range(10))</span></code> produces the list <code class="docutils literal notranslate"><span class="pre">[0,1,2,3,4,5,6,7,8,9]</span></code>.  You can also create your own list by a writing out its terms, e.g. <code class="docutils literal notranslate"><span class="pre">L</span> <span class="pre">=</span> <span class="pre">[4,7,10]</span></code>.</p>
+<p>Here we work with lists, and a very Pythonic approach to list manipulation.  With practice, this can be a powerful tool to write fast algorithms, exploiting the hard-wired capability of your computer to shift and slice large chunks of data.  Our eventual application will be to implement the Sieve of Eratosthenes, producing a long list of prime numbers (without using any <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> test along the way).</p>
+<p>We begin by creating a list to play with.  We mix numbers and strings… just for fun.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;one&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;three&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;five&#39;</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="s1">&#39;seven&#39;</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="s1">&#39;nine&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="list-terms-and-indices">
+<h3><span class="section-number">4.2.1. </span>List terms and indices<a class="headerlink" href="#list-terms-and-indices" title="Permalink to this heading">#</a></h3>
+<p>Notice that the entries in a list can be of any type.  The above list <code class="docutils literal notranslate"><span class="pre">L</span></code> has some integer entries and some string entries.  Lists are <strong>ordered</strong> in Python, <strong>starting at zero</strong>.  One can access the <span class="math notranslate nohighlight">\(n^{th}\)</span> entry in a list with a command like <code class="docutils literal notranslate"><span class="pre">L[n]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;three&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>  <span class="c1"># Note that Python has slightly different approaches to the print-function, and the output above.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>three
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>  <span class="c1"># We will use the print function, because it makes our printing intentions clear.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The location of an entry is called its <strong>index</strong>.  So <em>at</em> the index 3, the list <code class="docutils literal notranslate"><span class="pre">L</span></code> stores the entry <code class="docutils literal notranslate"><span class="pre">three</span></code>.  Note that the same entry can occur in many places in a list.  E.g. <code class="docutils literal notranslate"><span class="pre">[7,7,7]</span></code> is a list with 7 at the zeroth, first, and second index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># L = [0,&#39;one&#39;,2,&#39;three&#39;,4,&#39;five&#39;,6,&#39;seven&#39;,8,&#39;nine&#39;,10]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+nine
+</pre></div>
+</div>
+</div>
+</div>
+<p>The last bit of code demonstrates a cool Python trick.  The “-1st” entry in a list refers to the last entry. The “-2nd entry” refers to the second-to-last entry, and so on.  It gives a convenient way to access both sides of the list, even if you don’t know how long it is.</p>
+<p>Of course, you can use Python to find out how long a list is.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also use Python to find the sum of a list of numbers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># Be careful.  This is the sum of which numbers?  # The sum function can take lists or ranges.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-slicing">
+<h3><span class="section-number">4.2.2. </span>List slicing<a class="headerlink" href="#list-slicing" title="Permalink to this heading">#</a></h3>
+<p><strong>Slicing</strong> lists allows us to create new lists (or ranges) from old lists (or ranges), by chopping off one end or the other, or even slicing out entries at a fixed interval.  The simplest syntax has the form <code class="docutils literal notranslate"><span class="pre">L[a:b]</span></code> where <code class="docutils literal notranslate"><span class="pre">a</span></code> denotes the index of the starting entry and index of the final entry is one less than <code class="docutils literal notranslate"><span class="pre">b</span></code>.  It is best to try a few examples to get a feel for it.</p>
+<p>Slicing a list with a command like <code class="docutils literal notranslate"><span class="pre">L[a:b]</span></code> doesn’t actually <em>change</em> the original list <code class="docutils literal notranslate"><span class="pre">L</span></code>.  It just extracts some terms from the list and outputs those terms.  Soon enough, we will change the list <code class="docutils literal notranslate"><span class="pre">L</span></code> using a list assignment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># L = [0,&#39;one&#39;,2,&#39;three&#39;,4,&#39;five&#39;,6,&#39;seven&#39;,8,&#39;nine&#39;,10]</span>
+<span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, &#39;one&#39;, 2, &#39;three&#39;, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span>  <span class="c1"># Notice that L[0:5] and L[5:11] together recover the whole list.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;five&#39;, 6, &#39;seven&#39;, 8, &#39;nine&#39;, 10]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;three&#39;, 4, &#39;five&#39;, 6]
+</pre></div>
+</div>
+</div>
+</div>
+<p>This continues the strange (for beginners) Python convention of starting at the first number and ending just before the last number.  Compare to <code class="docutils literal notranslate"><span class="pre">range(3,7)</span></code>, for example.</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">L[0:5]</span></code> can be replaced by <code class="docutils literal notranslate"><span class="pre">L[:5]</span></code> to abbreviate.  The empty opening index tells Python to start at the beginning.  Similarly, the command <code class="docutils literal notranslate"><span class="pre">L[5:11]</span></code> can be replaced by <code class="docutils literal notranslate"><span class="pre">L[5:]</span></code>.  The empty closing index tells Python to end the slice and the end.  This is helpful if one doesn’t know where the list ends.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, &#39;one&#39;, 2, &#39;three&#39;, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;three&#39;, 4, &#39;five&#39;, 6, &#39;seven&#39;, 8, &#39;nine&#39;, 10]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Just like the <code class="docutils literal notranslate"><span class="pre">range</span></code> command, list slicing can take an optional third argument to give a step size.  To understand this, see the command below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, &#39;three&#39;, 4, &#39;five&#39;, 6, &#39;seven&#39;, 8, &#39;nine&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, &#39;five&#39;, 8]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If, in this three-argument syntax, the first or second argument is absent, then the slice starts at the beginning of the list or ends at the end of the list accordingly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span>  <span class="c1"># Just a reminder.  We haven&#39;t modified the original list!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, &#39;one&#39;, 2, &#39;three&#39;, 4, &#39;five&#39;, 6, &#39;seven&#39;, 8, &#39;nine&#39;, 10]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[:</span><span class="mi">9</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># Start at zero, go up to (but not including) 9, by steps of 3.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, &#39;three&#39;, 6]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># Start at two, go up through the end of the list, by steps of 3.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, &#39;five&#39;, 8]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[::</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># Start at zero, go up through the end of the list, by steps of 3.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, &#39;three&#39;, 6, &#39;nine&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="changing-list-slices">
+<h3><span class="section-number">4.2.3. </span>Changing list slices<a class="headerlink" href="#changing-list-slices" title="Permalink to this heading">#</a></h3>
+<p>Not only can we extract and study terms or slices of a list, we can change them by assignment.  The simplest case would be changing a single term of a list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="c1"># Start with the list L.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, &#39;one&#39;, 2, &#39;three&#39;, 4, &#39;five&#39;, 6, &#39;seven&#39;, 8, &#39;nine&#39;, 10]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Bacon!&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>  <span class="c1"># What do you think L is now?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, &#39;one&#39;, 2, &#39;three&#39;, 4, &#39;Bacon!&#39;, 6, &#39;seven&#39;, 8, &#39;nine&#39;, 10]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="p">::</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># What do you think this will do?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, &#39;Bacon!&#39;, 8]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can change an entire slice of a list with a single assignment.  Let’s change the first two terms of <code class="docutils literal notranslate"><span class="pre">L</span></code> in one line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Pancakes&#39;</span><span class="p">,</span> <span class="s1">&#39;Ham&#39;</span><span class="p">]</span>  <span class="c1"># What was L[:2] before?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="c1"># Oh... what have we done!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Pancakes&#39;, &#39;Ham&#39;, 2, &#39;three&#39;, 4, &#39;Bacon!&#39;, 6, &#39;seven&#39;, 8, &#39;nine&#39;, 10]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Pancakes&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can change a slice of a list with a single assignment, even when that slice does not consist of consecutive terms.  Try to predict what the following commands will do.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>  <span class="c1"># Let&#39;s see what the list looks like before.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Pancakes&#39;, &#39;Ham&#39;, 2, &#39;three&#39;, 4, &#39;Bacon!&#39;, 6, &#39;seven&#39;, 8, &#39;nine&#39;, 10]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">,</span><span class="s1">&#39;F&#39;</span><span class="p">]</span>  <span class="c1"># What was L[::2] before this assignment? </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>  <span class="c1"># What do you predict?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;A&#39;, &#39;Ham&#39;, &#39;B&#39;, &#39;three&#39;, &#39;C&#39;, &#39;Bacon!&#39;, &#39;D&#39;, &#39;seven&#39;, &#39;E&#39;, &#39;nine&#39;, &#39;F&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="list-methods">
+<h2><span class="section-number">4.3. </span>List methods<a class="headerlink" href="#list-methods" title="Permalink to this heading">#</a></h2>
+<p>A method is a function that is attached to an object.  We have already used one method:  the <code class="docutils literal notranslate"><span class="pre">format</span></code> method that is attached to all strings.  You might have seen the <code class="docutils literal notranslate"><span class="pre">replace</span></code> method for strings too.  Note that single-quotes <code class="docutils literal notranslate"><span class="pre">'Hello'</span></code> or double-quotes <code class="docutils literal notranslate"><span class="pre">&quot;Hello&quot;</span></code> can be used for strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Hello </span><span class="si">{}</span><span class="s2">!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;programming student&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hello programming student!&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Programming is fun!&quot;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;fun&#39;</span><span class="p">,</span><span class="s1">&#39;lit&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Programming is lit!&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>List methods are functions attached to lists.  Some useful methods include <code class="docutils literal notranslate"><span class="pre">append</span></code> and <code class="docutils literal notranslate"><span class="pre">sort</span></code>.  A fuller listing can be found at <a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html">the official documentation</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">append</span></code> method can be used to add new items to the end of a list.  But be careful if you want to add multiple items!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, [5, 6]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">L.remove(x)</span></code> to remove the first item from the list <code class="docutils literal notranslate"><span class="pre">L</span></code> whose value is equal to <code class="docutils literal notranslate"><span class="pre">x</span></code>. It raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if there is no such item.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">.</span><span class="n">remove</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span> <span class="c1"># extend the list by appending all the items from the list [5,6]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Behind the scenes, methods are functions which have a special input parameter called <code class="docutils literal notranslate"><span class="pre">self</span></code>.  So when you use a command like <code class="docutils literal notranslate"><span class="pre">L.append(4)</span></code>, you are effectively running <code class="docutils literal notranslate"><span class="pre">append(L,</span> <span class="pre">4)</span></code>.  The <code class="docutils literal notranslate"><span class="pre">self</span></code> parameter is the object the method is attached to.</p>
+<p>Like all functions, methods have outputs too.  But what can be confusing is that methods can <em>modify</em> <code class="docutils literal notranslate"><span class="pre">self</span></code> and can sometimes <em>return</em> <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+124
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is very confusing at first!  The list <code class="docutils literal notranslate"><span class="pre">append</span></code> method <em>does</em> change <code class="docutils literal notranslate"><span class="pre">self</span></code> by appending something to <code class="docutils literal notranslate"><span class="pre">self</span></code>.  But as a function, it returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>On the other hand, the string <code class="docutils literal notranslate"><span class="pre">replace</span></code> method <em>does not</em> change <code class="docutils literal notranslate"><span class="pre">self</span></code> and instead <em>returns</em> the modified string.</p>
+<p>This will make more sense after we study <em>mutable</em> and <em>immutable</em> types.  Lists are mutable (and thus are often changed by their methods).  Strings are immutable, and so changes are effected by producing new strings.  Another example of a string method is <code class="docutils literal notranslate"><span class="pre">sort()</span></code>.  The only parameter of <code class="docutils literal notranslate"><span class="pre">sort</span></code> is <code class="docutils literal notranslate"><span class="pre">self</span></code>, and so nothing needs to go between the parentheses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Make a list.</span>
+<span class="n">L</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1"># Sort the list.  This *changes* L and returns None.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>  <span class="c1"># Let&#39;s see what L is now.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Ukelele&#39;</span><span class="p">,</span> <span class="s1">&#39;Apple&#39;</span><span class="p">,</span> <span class="s1">&#39;Dog&#39;</span><span class="p">,</span> <span class="s1">&#39;Cat&#39;</span> <span class="p">]</span>
+<span class="n">L</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Apple&#39;, &#39;Cat&#39;, &#39;Dog&#39;, &#39;Ukelele&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sorting numbers is possible, because the Python operator <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> is defined for numbers.  Sorting strings is possible, because the Python operator <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> is interpreted alphabetically among strings.  If you mix types, Python might not know how to behave… you’ll get a TypeError.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Apple&#39;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span>
+<span class="n">L</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ssuzana</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">programming</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">math</span><span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="mi">03</span><span class="o">-</span><span class="n">lists</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">99</span> <span class="n">line</span> <span class="mi">2</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/03-lists.ipynb#Y201sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Apple&#39;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/03-lists.ipynb#Y201sZmlsZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">L</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/03-lists.ipynb#Y201sZmlsZQ%3D%3D?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: &#39;&lt;&#39; not supported between instances of &#39;str&#39; and &#39;int&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sieve-of-eratosthenes">
+<h2><span class="section-number">4.4. </span>Sieve of Eratosthenes<a class="headerlink" href="#sieve-of-eratosthenes" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Sieve of Eratosthenes</strong> (hereafter called “the sieve”) is a very fast way of producing long lists of primes, without doing repeated primality checking.  The basic idea is to start with all of the natural numbers, and successively filter out, or <a class="reference external" href="https://en.wikipedia.org/wiki/Sieve"><strong>sieve</strong></a>, the multiples of 2, then the multiples of 3, then the multiples of 5, etc., until only primes are left.  You can read more about the sieve, and experimental number theory, at <a class="reference external" href="https://theconversation.com/why-prime-numbers-still-fascinate-mathematicians-2-300-years-later-92484">The Conversation</a>.</p>
+<p>Using list slicing, we can carry out this sieving process efficiently.  And with a few more tricks we encounter here, we can carry out the Sieve <strong>very</strong> efficiently.</p>
+<p>The first approach we introduce is a bit naive, but is a good starting place.  We will begin with a list of numbers up to 100, and sieve out the appropriate multiples of 2,3,5,7.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span> <span class="c1"># Let&#39;s start with the numbers 0...99.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, to “filter”, i.e., to say that a number is <em>not</em> prime, let’s just change the number to the value <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Zero is not prime.</span>
+<span class="n">primes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># One is not prime.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span> <span class="c1"># What have we done?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[None, None, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s filter out the multiples of 2, starting at 4.  This is the slice <code class="docutils literal notranslate"><span class="pre">primes[4::2]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primes</span><span class="p">[</span><span class="mi">4</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">primes</span><span class="p">[</span><span class="mi">4</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># The right side is a list of Nones, of the necessary length.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span> <span class="c1"># What have we done?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[None, None, 2, 3, None, 5, None, 7, None, 9, None, 11, None, 13, None, 15, None, 17, None, 19, None, 21, None, 23, None, 25, None, 27, None, 29, None, 31, None, 33, None, 35, None, 37, None, 39, None, 41, None, 43, None, 45, None, 47, None, 49, None, 51, None, 53, None, 55, None, 57, None, 59, None, 61, None, 63, None, 65, None, 67, None, 69, None, 71, None, 73, None, 75, None, 77, None, 79, None, 81, None, 83, None, 85, None, 87, None, 89, None, 91, None, 93, None, 95, None, 97, None, 99]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we filter out the multiples of 3, starting at 9.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primes</span><span class="p">[</span><span class="mi">9</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">primes</span><span class="p">[</span><span class="mi">9</span><span class="p">::</span><span class="mi">3</span><span class="p">])</span>  <span class="c1"># The right side is a list of Nones, of the necessary length.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span> <span class="c1"># What have we done?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[None, None, 2, 3, None, 5, None, 7, None, None, None, 11, None, 13, None, None, None, 17, None, 19, None, None, None, 23, None, 25, None, None, None, 29, None, 31, None, None, None, 35, None, 37, None, None, None, 41, None, 43, None, None, None, 47, None, 49, None, None, None, 53, None, 55, None, None, None, 59, None, 61, None, None, None, 65, None, 67, None, None, None, 71, None, 73, None, None, None, 77, None, 79, None, None, None, 83, None, 85, None, None, None, 89, None, 91, None, None, None, 95, None, 97, None, None]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next the multiples of 5, starting at 25 (the first multiple of 5 greater than 5 that’s left!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primes</span><span class="p">[</span><span class="mi">25</span><span class="p">::</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">primes</span><span class="p">[</span><span class="mi">25</span><span class="p">::</span><span class="mi">5</span><span class="p">])</span>  <span class="c1"># The right side is a list of Nones, of the necessary length.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span> <span class="c1"># What have we done?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[None, None, 2, 3, None, 5, None, 7, None, None, None, 11, None, 13, None, None, None, 17, None, 19, None, None, None, 23, None, None, None, None, None, 29, None, 31, None, None, None, None, None, 37, None, None, None, 41, None, 43, None, None, None, 47, None, 49, None, None, None, 53, None, None, None, None, None, 59, None, 61, None, None, None, None, None, 67, None, None, None, 71, None, 73, None, None, None, 77, None, 79, None, None, None, 83, None, None, None, None, None, 89, None, 91, None, None, None, None, None, 97, None, None]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, the multiples of 7, starting at 49 (the first multiple of 7 greater than 7 that’s left!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primes</span><span class="p">[</span><span class="mi">49</span><span class="p">::</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">primes</span><span class="p">[</span><span class="mi">49</span><span class="p">::</span><span class="mi">7</span><span class="p">])</span>  <span class="c1"># The right side is a list of Nones, of the necessary length.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span> <span class="c1"># What have we done?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[None, None, 2, 3, None, 5, None, 7, None, None, None, 11, None, 13, None, None, None, 17, None, 19, None, None, None, 23, None, None, None, None, None, 29, None, 31, None, None, None, None, None, 37, None, None, None, 41, None, 43, None, None, None, 47, None, None, None, None, None, 53, None, None, None, None, None, 59, None, 61, None, None, None, None, None, 67, None, None, None, 71, None, 73, None, None, None, None, None, 79, None, None, None, 83, None, None, None, None, None, 89, None, None, None, None, None, None, None, 97, None, None]
+</pre></div>
+</div>
+</div>
+</div>
+<p>What’s left?  A lot of <code class="docutils literal notranslate"><span class="pre">None</span></code>s and the prime numbers up to 100.  We have successfully sieved out all the nonprime numbers in the list, using just four sieving steps (and setting 0 and 1 to <code class="docutils literal notranslate"><span class="pre">None</span></code> manually).</p>
+<p>But there’s a lot of room for improvement, from beginning to end!</p>
+<ol class="arabic simple">
+<li><p>The format of the end result is not so nice.</p></li>
+<li><p>We had to sieve each step manually.  It would be much better to have a function <code class="docutils literal notranslate"><span class="pre">prime_list(n)</span></code> which would output a list of primes up to <code class="docutils literal notranslate"><span class="pre">n</span></code> without so much supervision.</p></li>
+<li><p>The memory usage will be large, if we need to store all the numbers up to a large <code class="docutils literal notranslate"><span class="pre">n</span></code> at the beginning.</p></li>
+</ol>
+<p>We solve these problems in the following way.</p>
+<ol class="arabic simple">
+<li><p>We will use a list of <strong>booleans</strong> rather than a list of numbers.  The ending list will have a <code class="docutils literal notranslate"><span class="pre">True</span></code> value at prime indices and a <code class="docutils literal notranslate"><span class="pre">False</span></code> value at composite indices.  This reduces the memory usage and increases the speed.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">where</span></code> function (explained soon) will make the desired list of primes after everything else is done.</p></li>
+<li><p>We will proceed through the sieving steps algorithmically rather than entering each step manually.</p></li>
+</ol>
+<p>Here is a somewhat efficient implementation of the Sieve in Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="k">def</span> <span class="nf">isprime_list</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">    Return a list of length n+1</span>
+<span class="sd">    with Trues at prime indices and Falses at composite indices.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">flags</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># A list [True, True, True,...] to start.</span>
+    <span class="n">flags</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># Zero is not prime.  So its flag is set to False.</span>
+    <span class="n">flags</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># One is not prime.  So its flag is set to False.</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># The first prime is 2.  And we start sieving by multiples of 2.</span>
+    
+    <span class="k">while</span> <span class="n">p</span> <span class="o">&lt;=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c1"># We only need to sieve by p is p &lt;= sqrt(n).</span>
+        <span class="k">if</span> <span class="n">flags</span><span class="p">[</span><span class="n">p</span><span class="p">]:</span>  <span class="c1"># We sieve the multiples of p if flags[p]=True.</span>
+            <span class="n">flags</span><span class="p">[</span><span class="n">p</span><span class="o">*</span><span class="n">p</span><span class="p">::</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">flags</span><span class="p">[</span><span class="n">p</span><span class="o">*</span><span class="n">p</span><span class="p">::</span><span class="n">p</span><span class="p">])</span> <span class="c1"># Sieves out multiples of p, starting at p*p.</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># Try the next value of p.</span>
+        
+    <span class="k">return</span> <span class="n">flags</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">isprime_list</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[False, False, True, True, False, True, False, True, False, False, False, True, False, True, False, False, False, True, False, True, False, False, False, True, False, False, False, False, False, True, False, True, False, False, False, False, False, True, False, False, False, True, False, True, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False, True, False, True, False, False, False, False, False, True, False, False, False, True, False, True, False, False, False, False, False, True, False, False, False, True, False, False, False, False, False, True, False, False, False, False, False, False, False, True, False, False, False]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you look carefully at the list of booleans, you will notice a <code class="docutils literal notranslate"><span class="pre">True</span></code> value at the 2nd index, the 3rd index, the 5th index, the 7th index, etc..  The indices where the values are <code class="docutils literal notranslate"><span class="pre">True</span></code> are precisely the <strong>prime</strong> indices.  Since booleans take the smallest amount of memory of any data type (one <strong>bit</strong> of memory per boolean), your computer can carry out the <code class="docutils literal notranslate"><span class="pre">isprime_list(n)</span></code> function even when <code class="docutils literal notranslate"><span class="pre">n</span></code> is very large.</p>
+<p>To be more precise, there are 8 bits in a <strong>byte</strong>.  There are 1024 bytes (about 1000) in a kilobyte.  There are 1024 kilobytes in a megabyte.  There are 1024 megabytes in a gigabyte.  Therefore, a gigabyte of memory is enough to store about 8 billion bits.  That’s enough to store the result of <code class="docutils literal notranslate"><span class="pre">isprime_list(n)</span></code> when <code class="docutils literal notranslate"><span class="pre">n</span></code> is about 8 billion.  Not bad!  And your computer probably has 4 or 8 or 12 or 16 gigabytes of memory to use.</p>
+<p>To transform the list of booleans into a list of prime numbers, we create a function called <code class="docutils literal notranslate"><span class="pre">where</span></code>.  This function uses another Python technique called <strong>list comprehension</strong>.  We discuss this technique later in this lesson, so just use the <code class="docutils literal notranslate"><span class="pre">where</span></code> function as a tool for now, or <a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">read about list comprehension</a> if you’re curious.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">where</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Take a list of booleans as input and</span>
+<span class="sd">    outputs the list of indices where True occurs.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">))</span> <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>Combined with the <code class="docutils literal notranslate"><span class="pre">isprime_list</span></code> function, we can produce long lists of primes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">where</span><span class="p">(</span><span class="n">isprime_list</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s push it a bit further.  How many primes are there between 1 and 1 million?  We can figure this out in three steps:</p>
+<ol class="arabic simple">
+<li><p>Create the isprime_list.</p></li>
+<li><p>Use where to get the list of primes.</p></li>
+<li><p>Find the length of the list of primes.</p></li>
+</ol>
+<p>But it’s better to do it in two steps.</p>
+<ol class="arabic simple">
+<li><p>Create the isprime_list.</p></li>
+<li><p>Sum the list!  (Note that <code class="docutils literal notranslate"><span class="pre">True</span></code> is 1, for the purpose of summation!)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">isprime_list</span><span class="p">(</span><span class="mi">1000000</span><span class="p">))</span>  <span class="c1"># The number of primes up to a million!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>78498
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> isprime_list(10**6)  # 1000 ms = 1 second.
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24.2 ms ± 290 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> sum(isprime_list(10**6))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.5 ms ± 175 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This isn’t too bad!  It takes a fraction of a second to identify the primes up to a million, and a smaller fraction of a second to count them!  But we can do a little better.</p>
+<p>The first improvement is to take care of the even numbers first.  If we count carefully, then the sequence 4,6,8,…,n (ending at n-1 if n is odd) has the floor of (n-2)/2 terms.  Thus the line <code class="docutils literal notranslate"><span class="pre">flags[4::2]</span> <span class="pre">=</span> <span class="pre">[False]</span> <span class="pre">*</span> <span class="pre">((n-2)//2)</span></code> will set all the flags to False in the sequence 4,6,8,10,…  From there, we can begin sieving by <em>odd</em> primes starting with 3.</p>
+<p>The next improvement is that, since we’ve already sieved out all the even numbers (except 2), we don’t have to sieve out again by <em>even multiples</em>.  So when sieving by multiples of 3, we don’t have to sieve out 9,12,15,18,21,etc..  We can just sieve out 9,15,21,etc..  When <code class="docutils literal notranslate"><span class="pre">p</span></code> is an odd prime, this can be taken care of with the code <code class="docutils literal notranslate"><span class="pre">flags[p*p::2*p]</span> <span class="pre">=</span> <span class="pre">[False]</span> <span class="pre">*</span> <span class="pre">len(flags[p*p::2*p])</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">isprime_list</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">    Return a list of length n+1</span>
+<span class="sd">    with Trues at prime indices and Falses at composite indices.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">flags</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># A list [True, True, True,...] to start.</span>
+    <span class="n">flags</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># Zero is not prime.  So its flag is set to False.</span>
+    <span class="n">flags</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># One is not prime.  So its flag is set to False.</span>
+    <span class="n">flags</span><span class="p">[</span><span class="mi">4</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="p">((</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="k">while</span> <span class="n">p</span> <span class="o">&lt;=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c1"># We only need to sieve by p is p &lt;= sqrt(n).</span>
+        <span class="k">if</span> <span class="n">flags</span><span class="p">[</span><span class="n">p</span><span class="p">]:</span>  <span class="c1"># We sieve the multiples of p if flags[p]=True.</span>
+            <span class="n">flags</span><span class="p">[</span><span class="n">p</span><span class="o">*</span><span class="n">p</span><span class="p">::</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">flags</span><span class="p">[</span><span class="n">p</span><span class="o">*</span><span class="n">p</span><span class="p">::</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">])</span> <span class="c1"># Sieves out multiples of p, starting at p*p.</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">2</span> <span class="c1"># Try the next value of p.  Note that we can proceed only through odd p!</span>
+        
+    <span class="k">return</span> <span class="n">flags</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> sum(isprime_list(10**6))  # How much did this speed it up?
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17.3 ms ± 97.3 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another modest improvement is the following.  In the code above, the program <em>counts</em> the terms in sequences like 9,15,21,27,…, in order to set them to <code class="docutils literal notranslate"><span class="pre">False</span></code>.  This is accomplished with the length command <code class="docutils literal notranslate"><span class="pre">len(flags[p*p::2*p])</span></code>.  But that length computation is a bit too intensive.  A bit of algebraic work shows that the length is given formulaically in terms of <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">n</span></code> by the formula:</p>
+<div class="math notranslate nohighlight">
+\[len = \left\lfloor \frac{n - p^2 - 1}{2p} \right\rfloor + 1\]</div>
+<p>(Here <span class="math notranslate nohighlight">\(\lfloor x \rfloor\)</span> denotes the floor function, i.e., the result of rounding down.)  Putting this into the code yields the following.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">isprime_list</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">    Return a list of length n+1</span>
+<span class="sd">    with Trues at prime indices and Falses at composite indices.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">flags</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># A list [True, True, True,...] to start.</span>
+    <span class="n">flags</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># Zero is not prime.  So its flag is set to False.</span>
+    <span class="n">flags</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># One is not prime.  So its flag is set to False.</span>
+    <span class="n">flags</span><span class="p">[</span><span class="mi">4</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="p">((</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="k">while</span> <span class="n">p</span> <span class="o">&lt;=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c1"># We only need to sieve by p is p &lt;= sqrt(n).</span>
+        <span class="k">if</span> <span class="n">flags</span><span class="p">[</span><span class="n">p</span><span class="p">]:</span>  <span class="c1"># We sieve the multiples of p if flags[p]=True.</span>
+            <span class="n">flags</span><span class="p">[</span><span class="n">p</span><span class="o">*</span><span class="n">p</span><span class="p">::</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="p">((</span><span class="n">n</span><span class="o">-</span><span class="n">p</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">//</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Sieves out multiples of p, starting at p*p.</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">2</span> <span class="c1"># Try the next value of p.</span>
+        
+    <span class="k">return</span> <span class="n">flags</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> sum(isprime_list(10**6))  # How much did this speed it up?
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.4 ms ± 53.4 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>That should be pretty fast!  It should be under 100 ms (one tenth of one second!) to determine the primes up to a million, and on a newer computer it should be under 50ms.  We have gotten pretty close to the fastest algorithms that you can find in Python, without using external packages (like SAGE or sympy).  See the related <a class="reference external" href="https://stackoverflow.com/questions/2068372/fastest-way-to-list-all-primes-below-n">discussion on StackOverflow</a>… the code in this lesson was influenced by the code presented there.</p>
+<p><a id='analysis'></a></p>
+</section>
+<section id="data-analysis">
+<h2><span class="section-number">4.5. </span>Data analysis<a class="headerlink" href="#data-analysis" title="Permalink to this heading">#</a></h2>
+<p>Now that we can produce a list of prime numbers quickly, we can do some “data analysis”:  some experimental number theory to look for trends or patterns in the sequence of prime numbers.  Since Euclid (about 300 BCE), we have known that there are infinitely many prime numbers.  But how are they distributed?  What proportion of numbers are prime, and how does this proportion change over different ranges?  As theoretical questions, these belong the the field of analytic number theory.  But it is hard to know what to prove without doing a bit of experimentation.  And so, at least since Gauss <a class="reference external" href="http://www.ams.org/journals/bull/2006-43-01/S0273-0979-05-01096-7/S0273-0979-05-01096-7.pdf">(read Tschinkel’s article about Gauss’s tables)</a> started examining his extensive tables of prime numbers, mathematicians have been carrying out experimental number theory.</p>
+<section id="analyzing-the-list-of-primes">
+<h3><span class="section-number">4.5.1. </span>Analyzing the list of primes<a class="headerlink" href="#analyzing-the-list-of-primes" title="Permalink to this heading">#</a></h3>
+<p>Let’s begin by creating our data set:  the prime numbers up to 1 million.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primes</span> <span class="o">=</span> <span class="n">where</span><span class="p">(</span><span class="n">isprime_list</span><span class="p">(</span><span class="mi">1000000</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span> <span class="c1"># Our population size.  A statistician might call it N.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>78498
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># The last prime in our list, just before one million.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>999983
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span> <span class="c1"># What type is this data?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primes</span><span class="p">[:</span><span class="mi">100</span><span class="p">])</span> <span class="c1"># The first hundred prime numbers.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541]
+</pre></div>
+</div>
+</div>
+</div>
+<p>To carry out serious analysis, we will use the method of <strong>list comprehension</strong> to place our population into “bins” for statistical analysis.  Our first type of list comprehension has the form <code class="docutils literal notranslate"><span class="pre">[x</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">LIST</span> <span class="pre">if</span> <span class="pre">CONDITION]</span></code>.  This produces the list of all elements of LIST satisfying CONDITION.  It is similar to list slicing, except we pull out terms from the list according to whether a condition is true or false.</p>
+<p>For example, let’s divide the (odd) primes into two classes.  Red primes will be those of the form 4n+1.  Blue primes will be those of the form 4n+3.  In other words, a prime <code class="docutils literal notranslate"><span class="pre">p</span></code> is red if <code class="docutils literal notranslate"><span class="pre">p%4</span> <span class="pre">==</span> <span class="pre">1</span></code> and blue if <code class="docutils literal notranslate"><span class="pre">p%4</span> <span class="pre">==</span> <span class="pre">3</span></code>.  And the prime 2 is neither red nor blue.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">redprimes</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">primes</span> <span class="k">if</span> <span class="n">p</span><span class="o">%</span><span class="k">4</span> == 1] # Note the [x for x in LIST if CONDITION] syntax.
+<span class="n">blueprimes</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">primes</span> <span class="k">if</span> <span class="n">p</span><span class="o">%</span><span class="k">4</span> == 3]
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Red primes:&#39;</span><span class="p">,</span><span class="n">redprimes</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span> <span class="c1"># The first 20 red primes.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Blue primes:&#39;</span><span class="p">,</span><span class="n">blueprimes</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span> <span class="c1"># The first 20 blue primes.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Red primes: [5, 13, 17, 29, 37, 41, 53, 61, 73, 89, 97, 101, 109, 113, 137, 149, 157, 173, 181, 193]
+Blue primes: [3, 7, 11, 19, 23, 31, 43, 47, 59, 67, 71, 79, 83, 103, 107, 127, 131, 139, 151, 163]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">redprimes</span><span class="p">)</span><span class="si">}</span><span class="s2"> red primes and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">blueprimes</span><span class="p">)</span><span class="si">}</span><span class="s2"> blue primes, up to 1 million.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 39175 red primes and 39322 blue primes, up to 1 million.
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is pretty close!  It seems like prime numbers are about evenly distributed between red and blue.  Their remainder after division by 4 is about as likely to be 1 as it is to be 3.  In fact, it is proven that <em>asymptotically</em> the ratio between the number of red primes and the number of blue primes approaches 1.  However, Chebyshev noticed a persistent slight bias towards blue primes along the way.</p>
+<p>Some of the deepest conjectures in mathematics relate to the <a class="reference external" href="https://en.wikipedia.org/wiki/Prime-counting_function">prime counting function</a> <span class="math notranslate nohighlight">\(\pi(x)\)</span>.  Here <span class="math notranslate nohighlight">\(\pi(x)\)</span> is the <strong>number of primes</strong> between 1 and <span class="math notranslate nohighlight">\(x\)</span> (inclusive).  So <span class="math notranslate nohighlight">\(\pi(2) = 1\)</span> and <span class="math notranslate nohighlight">\(\pi(3) = 2\)</span> and <span class="math notranslate nohighlight">\(\pi(4) = 2\)</span> and <span class="math notranslate nohighlight">\(\pi(5) = 3\)</span>.  One can compute a value of <span class="math notranslate nohighlight">\(\pi(x)\)</span> pretty easily using a list comprehension.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">primes_upto</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">([</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">primes</span> <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">])</span> <span class="c1"># List comprehension recovers the primes up to x.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primes_upto</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># There are 168 primes between 1 and 1000.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>168
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we graph the prime counting function.  To do this, we use a list comprehension, and the visualization library called matplotlib.  For graphing a function, the basic idea is to create a list of x-values, a list of corresponding y-values (so the lists have to be the same length!), and then we feed the two lists into matplotlib to make the graph.</p>
+<p>We begin by loading the necessary packages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>  <span class="c1">#  A powerful graphics package.</span>
+<span class="kn">import</span> <span class="nn">numpy</span>  <span class="c1">#  A math package</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># A plotting subpackage in matplotlib.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s graph the function <span class="math notranslate nohighlight">\(y = x^2\)</span> over the domain <span class="math notranslate nohighlight">\(-2 \leq x \leq 2\)</span> for practice.  As a first step, we use numpy’s <code class="docutils literal notranslate"><span class="pre">linspace</span></code> function to create an evenly spaced set of 11 x-values between -2 and 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_values</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">25</span><span class="p">)</span>  <span class="c1"># The argument 11 is the *number* of terms, not the step size!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_values</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-2.         -1.83333333 -1.66666667 -1.5        -1.33333333 -1.16666667
+ -1.         -0.83333333 -0.66666667 -0.5        -0.33333333 -0.16666667
+  0.          0.16666667  0.33333333  0.5         0.66666667  0.83333333
+  1.          1.16666667  1.33333333  1.5         1.66666667  1.83333333
+  2.        ]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
+</pre></div>
+</div>
+</div>
+</div>
+<p>You might notice that the format looks a bit different from a list.  Indeed, if you check <code class="docutils literal notranslate"><span class="pre">type(x_values)</span></code>, it’s not a list but something else called a numpy array.  Numpy is a package that excels with computations on large arrays of data.  On the surface, it’s not so different from a list.  The <code class="docutils literal notranslate"><span class="pre">numpy.linspace</span></code> command is a convenient way of producing an evenly spaced list of inputs.</p>
+<p>The big difference is that operations on numpy arrays are interpreted differently than operations on ordinary Python lists.  Try the two commands for comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_values</span> <span class="o">+</span> <span class="n">x_values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-4.        , -3.66666667, -3.33333333, -3.        , -2.66666667,
+       -2.33333333, -2.        , -1.66666667, -1.33333333, -1.        ,
+       -0.66666667, -0.33333333,  0.        ,  0.33333333,  0.66666667,
+        1.        ,  1.33333333,  1.66666667,  2.        ,  2.33333333,
+        2.66666667,  3.        ,  3.33333333,  3.66666667,  4.        ])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_values</span> <span class="o">=</span> <span class="n">x_values</span> <span class="o">*</span> <span class="n">x_values</span>  <span class="c1"># How is multiplication interpreted on numpy arrays?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4.         3.36111111 2.77777778 2.25       1.77777778 1.36111111
+ 1.         0.69444444 0.44444444 0.25       0.11111111 0.02777778
+ 0.         0.02777778 0.11111111 0.25       0.44444444 0.69444444
+ 1.         1.36111111 1.77777778 2.25       2.77777778 3.36111111
+ 4.        ]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we use matplotlib to create a simple line graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">y_values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;The graph of $y = x^2$&#39;</span><span class="p">)</span>  <span class="c1"># The dollar signs surround the formula, in LaTeX format.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a16bb2e6f94d924fc2b6d62902d6ffe2465f3ff44dfecbc4cef4ffc62bc45de0.png" src="../_images/a16bb2e6f94d924fc2b6d62902d6ffe2465f3ff44dfecbc4cef4ffc62bc45de0.png" />
+</div>
+</div>
+<p>Let’s analyze the graphing code a bit more.  See the <a class="reference external" href="https://matplotlib.org/users/pyplot_tutorial.html">official pyplot tutorial</a> for more details.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">y_values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;The graph of $y = x^2$&#39;</span><span class="p">)</span>  <span class="c1"># The dollar signs surround the formula, in LaTeX format.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The first line contains the <strong>magic</strong> <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code>.  We have seen a magic word before, in <code class="docutils literal notranslate"><span class="pre">%timeit</span></code>.  <a class="reference external" href="http://ipython.readthedocs.io/en/stable/interactive/magics.html">Magic words</a> can call another program to assist.  So here, the magic <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code> calls matplotlib for help, and places the resulting figure within the notebook.</p>
+<p>The next line <code class="docutils literal notranslate"><span class="pre">plt.plot(x_values,</span> <span class="pre">y_values)</span></code> creates a <code class="docutils literal notranslate"><span class="pre">plot</span> <span class="pre">object</span></code> based on the data of the x-values and y-values.  It is an abstract sort of object, behind the scenes, in a format that matplotlib understands.  The following lines set the title of the plot, the axis labels, and turns a grid on.  The last line <code class="docutils literal notranslate"><span class="pre">plt.show</span></code> renders the plot as an image in your notebook.  There’s an infinite variety of graphs that matplotlib can produce – see <a class="reference external" href="https://matplotlib.org/gallery.html">the gallery</a> for more!  Other graphics packages include <a class="reference external" href="http://bokeh.pydata.org/en/latest/">bokeh</a> and <a class="reference external" href="http://seaborn.pydata.org/">seaborn</a>, which extends matplotlib.</p>
+</section>
+<section id="analysis-of-the-prime-counting-function">
+<h3><span class="section-number">4.5.2. </span>Analysis of the prime counting function<a class="headerlink" href="#analysis-of-the-prime-counting-function" title="Permalink to this heading">#</a></h3>
+<p>Now, to analyze the prime counting function, let’s graph it.  To make a graph, we will first need a list of many values of x and many corresponding values of <span class="math notranslate nohighlight">\(\pi(x)\)</span>.  We do this with two commands.  The first might take a minute to compute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_values</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000000</span><span class="p">,</span><span class="mi">1001</span><span class="p">)</span> <span class="c1"># The numpy array [0,1000,2000,3000,...,1000000]</span>
+<span class="n">pix_values</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">primes_upto</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_values</span><span class="p">])</span>  <span class="c1"># [FUNCTION(x) for x in LIST] syntax</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We created an array of x-values as before.  But the creation of an array of y-values (here, called <code class="docutils literal notranslate"><span class="pre">pix_values</span></code> to stand for <span class="math notranslate nohighlight">\(\pi(x)\)</span>) probably looks strange.  We have done two new things!</p>
+<ol class="arabic simple">
+<li><p>We have used a list comprehension <code class="docutils literal notranslate"><span class="pre">[primes_upto(x)</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">x_values]</span></code> to create a <strong>list</strong> of y-values.</p></li>
+<li><p>We have used numpy.array(LIST) syntax to convert a Python list into a numpy array.</p></li>
+</ol>
+<p>First, we explain the list comprehension.  Instead of pulling out values of a list according to a condition, with <code class="docutils literal notranslate"><span class="pre">[x</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">LIST</span> <span class="pre">if</span> <span class="pre">CONDITION]</span></code>, we have created a new list based on performing a function each element of a list.  The syntax, used above, is <code class="docutils literal notranslate"><span class="pre">[FUNCTION(x)</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">LIST]</span></code>.  These two methods of list comprehension can be combined, in fact.  The most general syntax for list comprehension is <code class="docutils literal notranslate"><span class="pre">[FUNCTION(x)</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">LIST</span> <span class="pre">if</span> <span class="pre">CONDITION]</span></code>.</p>
+<p>Second, a list comprehension can be carried out on a numpy array, but the result is a plain Python list.  It will be better to have a numpy array instead for what follows, so we use the <code class="docutils literal notranslate"><span class="pre">numpy.array()</span></code> function to convert the list into a numpy array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>  <span class="c1"># For example.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have two numpy arrays:  the array of x-values and the array of y-values.  We can make a plot with matplotlib.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">x_values</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pix_values</span><span class="p">)</span>  <span class="c1"># These better be the same, or else matplotlib will be unhappy.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">pix_values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;The prime counting function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$\pi(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ea0a7495fad8b199f604e3b613f918ec0c105ff9d05f6de62fb5f7f303a3ff5c.png" src="../_images/ea0a7495fad8b199f604e3b613f918ec0c105ff9d05f6de62fb5f7f303a3ff5c.png" />
+</div>
+</div>
+<p>In this range, the prime counting function might look nearly linear.  But if you look closely, there’s a subtle downward bend.  This is more pronounced in smaller ranges.  For example, let’s look at the first 10 x-values and y-values only.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">pix_values</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>  <span class="c1"># Look closer to 0.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;The prime counting function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$\pi(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/16553f7fe07fd282000b3629ffba138076a888087e76c7baa471f2cbd5dfdf41.png" src="../_images/16553f7fe07fd282000b3629ffba138076a888087e76c7baa471f2cbd5dfdf41.png" />
+</div>
+</div>
+<p>It still looks almost linear, but there’s a visible downward bend here.  How can we see this bend more clearly?  If the graph were linear, its equation would have the form <span class="math notranslate nohighlight">\(\pi(x) = mx\)</span> for some fixed slope <span class="math notranslate nohighlight">\(m\)</span> (since the graph <em>does</em> pass through the origin).  Therefore, the quantity <span class="math notranslate nohighlight">\(\pi(x)/x\)</span> would be <em>constant</em> if the graph were linear.</p>
+<p>Hence, if we graph <span class="math notranslate nohighlight">\(\pi(x) / x\)</span> on the y-axis and <span class="math notranslate nohighlight">\(x\)</span> on the x-axis, and the result is nonconstant, then the function <span class="math notranslate nohighlight">\(\pi(x)\)</span> is nonlinear.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m_values</span> <span class="o">=</span> <span class="n">pix_values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">/</span> <span class="n">x_values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># We start at 1, to avoid a division by zero error.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">m_values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;The ratio $\pi(x) / x$ as $x$ varies.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$\pi(x) / x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/156b8ef2afe5835718c7a264dfa025ad5af8e26675b8e3517dbfee0d5f08457e.png" src="../_images/156b8ef2afe5835718c7a264dfa025ad5af8e26675b8e3517dbfee0d5f08457e.png" />
+</div>
+</div>
+<p>That is certainly not constant!  The decay of <span class="math notranslate nohighlight">\(\pi(x) / x\)</span> is not so different from <span class="math notranslate nohighlight">\(1 / \log(x)\)</span>, in fact.  To see this, let’s overlay the graphs.  We use the <code class="docutils literal notranslate"><span class="pre">numpy.log</span></code> function, which computes the natural logarithm of its input (and allows an entire array as input).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">m_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\pi(x)/x$&#39;</span><span class="p">)</span>  <span class="c1"># The same as the plot above.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x_values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$1 / \log(x)$&#39;</span><span class="p">)</span>  <span class="c1"># Overlay the graph of 1 / log(x)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;The ratio of $\pi(x) / x$ as $x$ varies.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$\pi(x) / x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  <span class="c1"># Turn on the legend.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2536b3dd33b164c4f5310abe3fec57bd2cea8d64784260ce8ef1316c0d6b2f64.png" src="../_images/2536b3dd33b164c4f5310abe3fec57bd2cea8d64784260ce8ef1316c0d6b2f64.png" />
+</div>
+</div>
+<p>The shape of the decay of <span class="math notranslate nohighlight">\(\pi(x) / x\)</span> is very close to <span class="math notranslate nohighlight">\(1 / \log(x)\)</span>, but it looks like there is an offset.  In fact, there is, and it is pretty close to <span class="math notranslate nohighlight">\(1 / \log(x)^2\)</span>.  And that is close, but again there’s another little offset, this time proportional to <span class="math notranslate nohighlight">\(2 / \log(x)^3\)</span>.  This goes on forever, if one wishes to approximate <span class="math notranslate nohighlight">\(\pi(x) / x\)</span> by an “asymptotic expansion” (not a good idea, it turns out).</p>
+<p>The closeness of <span class="math notranslate nohighlight">\(\pi(x) / x\)</span> to <span class="math notranslate nohighlight">\(1 / \log(x)\)</span> is expressed in the <strong>prime number theorem</strong>:
+$<span class="math notranslate nohighlight">\(\lim_{x \rightarrow \infty} \frac{\pi(x)}{x / \log(x)} = 1.\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">m_values</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x_values</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>  <span class="p">)</span>  <span class="c1"># Should get closer to 1.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;The ratio $\pi(x) / (x / \log(x))$ approaches 1... slowly&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$\pi(x) / (x / \log(x)) $&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">1.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4ac5aef0443dcd5fc95aa7c079c5c0b691abfdb3fc3f1f52dc8696376cdbaf28.png" src="../_images/4ac5aef0443dcd5fc95aa7c079c5c0b691abfdb3fc3f1f52dc8696376cdbaf28.png" />
+</div>
+</div>
+<p>Comparing the graph to the theoretical result, we find that the ratio <span class="math notranslate nohighlight">\(\pi(x) / (x / \log(x))\)</span> approaches <span class="math notranslate nohighlight">\(1\)</span> (the theoretical result) but very slowly (see the graph above!).</p>
+<p>A much stronger result relates <span class="math notranslate nohighlight">\(\pi(x)\)</span> to the “logarithmic integral” <span class="math notranslate nohighlight">\(li(x)\)</span>.  The <a class="reference external" href="http://www.claymath.org/millennium-problems/riemann-hypothesis">Riemann hypothesis</a> is equivalent to the statement
+$<span class="math notranslate nohighlight">\(\left\vert \pi(x) - li(x) \right\vert = O(\sqrt{x} \log(x)).\)</span><span class="math notranslate nohighlight">\(
+In other words, the error if one approximates \)</span>\pi(x)<span class="math notranslate nohighlight">\( by \)</span>li(x)<span class="math notranslate nohighlight">\( is bounded by a constant times \)</span>\sqrt{x} \log(x)$.  The logarithmic integral function isn’t part of Python or numpy, but it is in the mpmath package.  If you have this package installed, then you can try the following.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpmath</span> <span class="kn">import</span> <span class="n">li</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primes_upto</span><span class="p">(</span><span class="mi">1000000</span><span class="p">))</span>  <span class="c1"># The number of primes up to 1 million.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">li</span><span class="p">(</span><span class="mi">1000000</span><span class="p">))</span>  <span class="c1"># The logarithmic integral of 1 million.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>78498
+78627.5491594622
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prime-gaps">
+<h3><span class="section-number">4.5.3. </span>Prime gaps<a class="headerlink" href="#prime-gaps" title="Permalink to this heading">#</a></h3>
+<p>As a last bit of data analysis, we consider the <strong>prime gaps</strong>.  These are the numbers that occur as differences between consecutive primes.  Since all primes except 2 are odd, all prime gaps are even except for the 1-unit gap between 2 and 3.  There are many unsolved problems about prime gaps; the most famous might be that a gap of 2 occurs infinitely often (as in the gaps between 3,5 and between 11,13 and between 41,43, etc.).</p>
+<p>Once we have our data set of prime numbers, it is not hard to create a data set of prime gaps.  Recall that <code class="docutils literal notranslate"><span class="pre">primes</span></code> is our list of prime numbers up to 1 million.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span> <span class="c1"># The number of primes up to 1 million.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>78498
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primes_allbutlast</span> <span class="o">=</span> <span class="n">primes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># This excludes the last prime in the list.</span>
+<span class="n">primes_allbutfirst</span> <span class="o">=</span> <span class="n">primes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># This excludes the first (i.e., with index 0) prime in the list.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primegaps</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">primes_allbutfirst</span><span class="p">)</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">primes_allbutlast</span><span class="p">)</span> <span class="c1"># Numpy is fast!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primegaps</span><span class="p">[:</span><span class="mi">100</span><span class="p">])</span>  <span class="c1"># The first hundred prime gaps!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1  2  2  4  2  4  2  4  6  2  6  4  2  4  6  6  2  6  4  2  6  4  6  8
+  4  2  4  2  4 14  4  6  2 10  2  6  6  4  6  6  2 10  2  4  2 12 12  4
+  2  4  6  2 10  6  6  6  2  6  4  2 10 14  4  2  4 14  6 10  2  4  6  8
+  6  6  4  6  8  4  8 10  2 10  2  6  4  6  8  4  2  4 12  8  4  8  4  6
+ 12  2 18  6]
+</pre></div>
+</div>
+</div>
+</div>
+<p>What have we done?  It is useful to try out this method on a short list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">20</span><span class="p">]</span>  <span class="c1"># A nice short list.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 7]
+[3, 7, 20]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have two lists of the same length.  The gaps in the original list <code class="docutils literal notranslate"><span class="pre">L</span></code> are the differences between terms of the <em>same</em> index in the two new lists.  One might be tempted to just subtract, e.g., with the command <code class="docutils literal notranslate"><span class="pre">L[1:]</span> <span class="pre">-</span> <span class="pre">L[:-1]</span></code>, but subtraction is not defined for lists. Note that <code class="docutils literal notranslate"><span class="pre">L[1:]</span> <span class="pre">-</span> <span class="pre">L[:-1]</span></code> will give a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p>
+<p>Fortunately, by converting the lists to numpy arrays, we can use numpy’s term-by-term subtraction operation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">L</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># See the gaps in the list [1,3,7,20] in the output.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2,  4, 13])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s return to our primegaps data set.  It contains all the gap-sizes for primes up to 1 million.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">primes</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">primegaps</span><span class="p">))</span>  <span class="c1"># This should be one less than the number of primes.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>78498
+78497
+</pre></div>
+</div>
+</div>
+</div>
+<p>As a last example of data visualization, we use matplotlib to produce a histogram of the prime gaps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">primegaps</span><span class="p">)</span>  <span class="c1"># The largest prime gap that appears!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>114
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1">#  Makes the resulting figure 12in by 5in.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">primegaps</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">115</span><span class="p">))</span> <span class="c1">#  Makes a histogram with one bin for each possible gap from 1 to 114.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Gap size&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;The frequency of prime gaps, for primes up to 1 million&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9c10acee650145b9eca145f0e11ba6e6627393a63a71552abf942aed83429d76.png" src="../_images/9c10acee650145b9eca145f0e11ba6e6627393a63a71552abf942aed83429d76.png" />
+</div>
+</div>
+<p>Observe that gaps of 2 (twin primes) are pretty frequent.  There are over 8000 of them, and about the same number of 4-unit gaps!  But gaps of 6 are most frequent in the population, and there are some interesting peaks at 6, 12, 18, 24, 30.  What else do you observe?</p>
+</section>
+</section>
+<section id="exercises">
+<h2><span class="section-number">4.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>To check whether a number <code class="docutils literal notranslate"><span class="pre">n</span></code> is prime, you can first check whether <code class="docutils literal notranslate"><span class="pre">n</span></code> is even, and then check whether <code class="docutils literal notranslate"><span class="pre">n</span></code> has any odd factors.  Change the <code class="docutils literal notranslate"><span class="pre">is_prime_fast</span></code> function by implementing this improvement.  How much of a speedup did you get?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime_fast</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Checks whether the argument n is a prime number.</span>
+<span class="sd">    Uses a brute force search for factors between 2 and sqrt(n).</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">root_n</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">root_n</span><span class="p">:</span>  <span class="c1"># j will proceed through the list of numbers 2,3,... up to sqrt(n).</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># is n divisible by j?</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is a factor of </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># There&#39;s a Python abbreviation for this:  j += 1.</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+</pre></div>
+</div>
+</li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> tool to study the speed of <code class="docutils literal notranslate"><span class="pre">is_prime_fast</span></code> from Exercise 1 for various sizes of <code class="docutils literal notranslate"><span class="pre">n</span></code>.  Using about 10 data points, relate the size of <code class="docutils literal notranslate"><span class="pre">n</span></code> to the time taken by the <code class="docutils literal notranslate"><span class="pre">is_prime_fast</span></code> function.</p></li>
+<li><p>Write a function <code class="docutils literal notranslate"><span class="pre">is_square(n)</span></code> to test whether a given integer <code class="docutils literal notranslate"><span class="pre">n</span></code> is a perfect square (like 0, 1, 4, 9, 16, etc.).  How fast can you make it run?  Describe the different approaches you try and which are fastest.</p></li>
+<li><p>Create a list L with L = [1,2,3,…,100] (all the numbers from 1 to 100).  What is L[50]?</p></li>
+<li><p>Take the same list L, and extract a slice of the form [5,10,15,…,95] with a command of the form L[a:b:c].</p></li>
+<li><p>Take the same list L, and change all the even numbers to zeros, so that L looks like [1,0,3,0,5,0,…,99,0].  Hint:  You might wish to use the list [0]*50.</p></li>
+<li><p>Try the command <code class="docutils literal notranslate"><span class="pre">L[-1::-1]</span></code> on a list.  What does it do?  Can you guess before executing it?  Can you understand why?  In fact, strings are indexed like lists.  Try setting <code class="docutils literal notranslate"><span class="pre">L</span> <span class="pre">=</span> <span class="pre">'Hello'</span></code> and the previous command.</p></li>
+<li><p>Create the list [1,100,3,98,5,96,…,99,2], where the odd terms are in order and the even terms are in reverse order.  There are multiple methods!</p></li>
+<li><p>Use the append method with a loop to create a list of perfect squares, [0,1,4,9,16,25,…,10000].</p></li>
+<li><p>Create a list of 52 “cards” to resemble a standard card deck.  The suits can be denoted C,S,D,H for clubs, spades, diamonds, and hearts.  The numbers can be denoted 1-13 (with Ace = 1, Jack = 11, Queen = 12, King = 13).  So “9H” would be the 9 of hearts, and 12S the queen of spades.  Your list L should contain every card.</p></li>
+<li><p>Challenge:  write a function which performs a “perfect riffle shuffle” on a list of cards.  This shuffle should have the effect of dividing the deck into two equal pieces, and then precisely interlacing the two pieces to form a new list.  E.g., an input list of <code class="docutils literal notranslate"><span class="pre">[1,2,3,4,5,6]</span></code> should be broken into <code class="docutils literal notranslate"><span class="pre">[1,2,3]</span></code> and <code class="docutils literal notranslate"><span class="pre">[4,5,6]</span></code> and then interlaced as <code class="docutils literal notranslate"><span class="pre">[1,4,2,5,3,6]</span></code>.</p></li>
+<li><p>Prove that the length of <code class="docutils literal notranslate"><span class="pre">range(p*p,</span> <span class="pre">n,</span> <span class="pre">2*p)</span></code> equals <span class="math notranslate nohighlight">\(\lfloor \frac{n - p^2 - 1}{2p} \rfloor + 1\)</span>.</p></li>
+<li><p>A natural number <span class="math notranslate nohighlight">\(n\)</span> is called squarefree if it has no perfect square divides <span class="math notranslate nohighlight">\(n\)</span> except for 1.  Write a function <code class="docutils literal notranslate"><span class="pre">squarefree_list(n)</span></code> which outputs a list of booleans:  <code class="docutils literal notranslate"><span class="pre">True</span></code> if the index is squarefree and <code class="docutils literal notranslate"><span class="pre">False</span></code> if the index is not squarefree.  For example, if you execute <code class="docutils literal notranslate"><span class="pre">squarefree_list(12)</span></code>, the output should be <code class="docutils literal notranslate"><span class="pre">[False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False,</span> <span class="pre">False,</span> <span class="pre">True,</span> <span class="pre">True,</span> <span class="pre">False]</span></code>.  Note that the <code class="docutils literal notranslate"><span class="pre">False</span></code> entries are located the indices 0, 4, 8, 9, 12.  These natural numbers have perfect square divisors besides 1.</p></li>
+<li><p>Your DNA contains about 3 billion base pairs.  Each “base pair” can be thought of as a letter, A, T, G, or C.  How many bits would be required to store a single base pair?  In other words, how might you convert a sequence of booleans into a letter A,T,G, or C?  Given this, how many megabytes or gigabytes are required to store your DNA?  How many people’s DNA would fit on a thumb-drive?</p></li>
+<li><p>Create functions <code class="docutils literal notranslate"><span class="pre">redprimes_upto(x)</span></code> and <code class="docutils literal notranslate"><span class="pre">blueprimes_upto(x)</span></code> which count the number of red/blue primes up to a given number <code class="docutils literal notranslate"><span class="pre">x</span></code>.  Recall that we defined red/blue primes to be those of the form 4n+1 or 4n+3, respectively.  Graph the relative proportion of red/blue primes as <code class="docutils literal notranslate"><span class="pre">x</span></code> varies from 1 to 1 million.  E.g., are the proportions 50%/50% or 70%/30%, and how do these proportions change?  Note:  this is also visualized in <a class="reference external" href="http://bookstore.ams.org/mbk-105">An Illustrated Theory of Numbers</a> and you can read <a class="reference external" href="https://projecteuclid.org/euclid.em/1048515870">an article by Rubinstein and Sarnak</a> for more.</p></li>
+<li><p>Does there seem to be a bias in the last digits of primes?  Note that, except for 2 and 5, every prime ends in 1,3,7, or 9.  Note: the last digit of a number <code class="docutils literal notranslate"><span class="pre">n</span></code> is obtained from <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">%</span> <span class="pre">10</span></code>.</p></li>
+<li><p>Read about the <a class="reference external" href="https://www.quantamagazine.org/mathematicians-discover-prime-conspiracy-20160313">“Prime Conspiracy”</a>, recently discovered by Lemke Oliver and Soundararajan.  Can you detect their conspiracy in our data set of primes?</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02-functions-control-statements.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Functions and Control Statements</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04-numpy-intro-and-visuzalization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Introduction to NumPy and Visualization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primality-testing">4.1. Primality testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-manipulation">4.2. List manipulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-terms-and-indices">4.2.1. List terms and indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-slicing">4.2.2. List slicing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-list-slices">4.2.3. Changing list slices</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-methods">4.3. List methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sieve-of-eratosthenes">4.4. Sieve of Eratosthenes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis">4.5. Data analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-the-list-of-primes">4.5.1. Analyzing the list of primes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-prime-counting-function">4.5.2. Analysis of the prime counting function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prime-gaps">4.5.3. Prime gaps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">4.6. Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marty Weissman and Suzana Șerboi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+     <div style="text-align: left;">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

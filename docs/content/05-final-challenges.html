@@ -1,0 +1,892 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Challenges &#8212; Python Programming for Math</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/05-final-challenges';</script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-python-4-math.png" class="logo__image only-light" alt="Python Programming for Math - Home"/>
+    <script>document.write(`<img src="../_static/logo-python-4-math.png" class="logo__image only-dark" alt="Python Programming for Math - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00-colab-intro.html">1. Google Colab Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-computing-with-python.html">2. Computing with Python:  an Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-functions-control-statements.html">3. Functions and Control Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-lists.html">4. Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-numpy-intro-and-visuzalization.html">5. Introduction to NumPy and Visualization</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ssuzana/python-programming-for-math" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ssuzana/python-programming-for-math/edit/master/_build/html/content/05-final-challenges.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ssuzana/python-programming-for-math/issues/new?title=Issue%20on%20page%20%2Fcontent/05-final-challenges.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/05-final-challenges.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Challenges</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repetition-and-benchmarking">Repetition and benchmarking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-challenges">Final challenges!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-1">Challenge 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-2">Challenge 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-3">Challenge 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-4">Challenge 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-5">Challenge 5</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="challenges">
+<h1>Challenges<a class="headerlink" href="#challenges" title="Permalink to this heading">#</a></h1>
+<p>To wrap things up, we are going to bring together the techniques we have seen, and attempt a few challenges.</p>
+<p>Please submit this notebook by 5pm (California time) on Wednesday, March 17th.  Your submission should include answers to all three questions from the first (Repetition and benchmarking) section, and <strong>two</strong> of the challenging problems.</p>
+<section id="repetition-and-benchmarking">
+<h2>Repetition and benchmarking<a class="headerlink" href="#repetition-and-benchmarking" title="Permalink to this heading">#</a></h2>
+<p>Computers are very good at repetition.  As your programming skills improve, you can more easily coax your computer into performing more repetitions.  We have seen at least three ways of performing repetition:  with loops (e.g, for and while loops), with lists (especially slicing and comprehension), and with numpy arrays (especially vectorized functions).</p>
+<p>It is good to see this, in a simple example, to reflect on what you’ve learned this quarter.  Our simple example will be producing a list of squares <span class="math notranslate nohighlight">\(n^2\)</span> for <span class="math notranslate nohighlight">\(n\)</span> in a range of numbers.</p>
+<p>The first things we learned were how to use Python as a calculator, printing “answers” to the screen, and using a “for loop” to repeat things.  Here is a bit of code in that spirit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we learned about lists.  Here are two ways to make a list of the squares, from <span class="math notranslate nohighlight">\(0^2\)</span> up to <span class="math notranslate nohighlight">\(9^2\)</span>.  We print the list at the end of each code block.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+  <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+  <span class="n">L</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">n</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hopefully you learned to give your lists better names, like <code class="docutils literal notranslate"><span class="pre">square_list</span></code>.  A very slick Pythonic way of producing a list is with “list comprehension”.  Such an approach is in the code below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">square_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">square_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we learned about the numpy package, which pumps arrays through the processor very quickly.  A numpy approach is below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># First we have to load the package.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0  1  4  9 16 25 36 49 64 81]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s consider the question:  what is the fastest way to produce a list (or array) of squares?  To answer it, we will wrap things in different functions, and carry out some time analysis.</p>
+<p>Notice that the functions are as identical as possible.  The method of creating a list/array is the different in each function.  But all the functions take a single input <code class="docutils literal notranslate"><span class="pre">N</span></code> and return a list or array with the squares of 0,…,N-1.  Note that there are <strong>no print statements</strong>!  Printing takes time, and we don’t care about how much time it takes to <em>print</em> a list on your screen.  Also, if we run %timeit, then a print statement will fill your screen with tens of thousands of printed messages!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_sq_1</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+  <span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">L</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_sq_2</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+  <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span>
+  <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">L</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">n</span>
+  <span class="k">return</span> <span class="n">L</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_sq_3</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_sq_4</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+  <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">A</span><span class="o">*</span><span class="n">A</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> make_sq_1(1000)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38.4 µs ± 154 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> make_sq_2(1000)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31.3 µs ± 161 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> make_sq_3(1000)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24.9 µs ± 341 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> make_sq_4(1000)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.09 µs ± 6.24 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>These benchmarks are useful, but let’s do a graphical analysis.  This is the last thing we studied.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> <span class="c1"># In case we want some modern stylings.</span>
+<span class="kn">import</span> <span class="nn">time</span> <span class="k">as</span> <span class="nn">time</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> <span class="c1"># In case we want some modern stylings.</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">time</span> <span class="k">as</span> <span class="nn">time</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we are going to create a graph to benchmark the performance of these three functions.  This will use a few new programming techniques.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span> <span class="c1"># Initialize a plot.</span>
+<span class="n">N_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)])</span> <span class="c1"># We&#39;ll try N in the array [2,4,8,..,~1 million]</span>
+<span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="n">make_sq_1</span><span class="p">,</span> <span class="n">make_sq_2</span><span class="p">,</span> <span class="n">make_sq_3</span><span class="p">,</span> <span class="n">make_sq_4</span><span class="p">]:</span> <span class="c1"># A list of functions, oh my!</span>
+  <span class="n">time_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">N_array</span><span class="p">))</span> <span class="c1"># Initialize an array of zeros</span>
+  <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">N</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">N_array</span><span class="p">):</span>  <span class="c1"># See notes afterwards about the enumerate command.</span>
+    <span class="n">time_tot</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">reps</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span> <span class="c1"># Average of 10 repetitions.</span>
+      <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+      <span class="n">method</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+      <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+      <span class="n">time_tot</span> <span class="o">+=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+    <span class="n">time_ave</span> <span class="o">=</span> <span class="n">time_tot</span> <span class="o">/</span> <span class="mi">10</span>
+    <span class="n">time_array</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_ave</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N_array</span><span class="p">,</span> <span class="n">time_array</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Time using function &#39;</span><span class="o">+</span><span class="n">method</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Time to create a list of squares from 1 to N&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Length of list (N)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s do a line-by-line analysis.</p>
+<ol class="arabic">
+<li><p><code class="docutils literal notranslate"><span class="pre">fig,ax</span> <span class="pre">=</span> <span class="pre">plt.subplots(1,1,figsize=(8,5))</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">N_array</span> <span class="pre">=</span> <span class="pre">np.array([2**n</span> <span class="pre">for</span> <span class="pre">n</span> <span class="pre">in</span> <span class="pre">range(1,21)])</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">method</span> <span class="pre">in</span> <span class="pre">[make_sq_1,</span> <span class="pre">make_sq_2,</span> <span class="pre">make_sq_3,</span> <span class="pre">make_sq_4]:</span></code></p></li>
+<li><p><code class="docutils literal notranslate">&#160; <span class="pre">time_array</span> <span class="pre">=</span> <span class="pre">np.zeros(len(N_array))</span> <span class="pre">#</span> <span class="pre">Initialize</span> <span class="pre">an</span> <span class="pre">array</span> <span class="pre">of</span> <span class="pre">zeros</span></code></p></li>
+<li><p><code class="docutils literal notranslate">&#160; <span class="pre">for</span> <span class="pre">j,N</span> <span class="pre">in</span> <span class="pre">enumerate(N_array):</span></code></p></li>
+<li><p><code class="docutils literal notranslate">&#160;&#160;&#160; <span class="pre">time_tot</span> <span class="pre">=</span> <span class="pre">0</span></code>
+<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">reps</span> <span class="pre">in</span> <span class="pre">range(10):</span></code>
+<code class="docutils literal notranslate"><span class="pre">start_time</span> <span class="pre">=</span> <span class="pre">time.time()</span></code>
+<code class="docutils literal notranslate"><span class="pre">method(N)</span></code>
+<code class="docutils literal notranslate"><span class="pre">end_time</span> <span class="pre">=</span> <span class="pre">time.time()</span></code>
+<code class="docutils literal notranslate"><span class="pre">time_tot</span> <span class="pre">+=</span> <span class="pre">end_time</span> <span class="pre">-</span> <span class="pre">start_time</span></code>
+<code class="docutils literal notranslate"><span class="pre">time_ave</span> <span class="pre">=</span> <span class="pre">time_tot</span> <span class="pre">/</span> <span class="pre">10</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">time_array[j]</span> <span class="pre">=</span> <span class="pre">time_ave</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.plot(N_array,</span> <span class="pre">time_array,</span> <span class="pre">label='Time</span> <span class="pre">using</span> <span class="pre">function</span> <span class="pre">'+method.__name__)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.xscale('log')</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.yscale('log')</span></code></p></li>
+</ol>
+<p>Line 1 initializes a plot, with figure size 8 inches by 5 inches.  The “1,1” means that the plot has no subplots, or more precisely, it is a 1 by 1 grid of plots.  (Only one plot).</p>
+<p>In line 2, we use a list comprehension to make a list [2,4,8,16,…, 2^20].  Note that 2^20 is about one million.  These are the N’s that we’re going to work with.</p>
+<p>Line 3 might be surprising and interesting.  The variable <code class="docutils literal notranslate"><span class="pre">method</span></code> is iterated through an array of four <em>functions</em>!  Yes, we can have a list of functions!  And then we can use those functions!  Functions are Python objects like any other, and they can be treated as such.</p>
+<p>Lines 4-6 create an array of times.  Instead of using the %timeit magic, we store our times in an array, and we carry out a timing experiment from scratch.  Line 4 just initializes a numpy array of zeros to fill later.</p>
+<p>Line 5 has a new command <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> in the loop.  This makes <code class="docutils literal notranslate"><span class="pre">N</span></code> iterate through our <code class="docutils literal notranslate"><span class="pre">N_array</span></code>, and meanwhile <code class="docutils literal notranslate"><span class="pre">j</span></code> will simply “count up”.  It’s equivalent to setting <code class="docutils literal notranslate"><span class="pre">j=0</span></code> before the loop, and putting a <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">=</span> <span class="pre">j</span> <span class="pre">+</span> <span class="pre">1</span></code> within the loop to count.</p>
+<p>Line 6 carries out the timing experiment.  It runs a function (<code class="docutils literal notranslate"><span class="pre">method</span></code>) to create a list of squares up to <code class="docutils literal notranslate"><span class="pre">N</span></code>.  It does this 10 times, checking the time before and after each time.  Then it computes the average amount of time elapsed (among the 10 repetitions) and records this in the <code class="docutils literal notranslate"><span class="pre">time_array</span></code>.</p>
+<p>Line 7 plots <code class="docutils literal notranslate"><span class="pre">N</span></code> on the x-axis and time (<code class="docutils literal notranslate"><span class="pre">time_array</span></code>) on the y-axis with a line plot.  It assigns this plot a label, which is the name of the method.  To find the name of the function <code class="docutils literal notranslate"><span class="pre">method</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">method.__name__</span></code>.  That’s a bit fancier Python.</p>
+<p>Finally, Line 8 produces the legend from the labels.</p>
+<p>Lines 9 and 10 make the x-axis and y-axis log-scaled, which is helpful since the variable <code class="docutils literal notranslate"><span class="pre">N</span></code> is increasing exponentially, and some times are as short as microseconds while others are closer to milliseconds or seconds.</p>
+<p>The rest is styling.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Interpret the plot above.  Which method is fastest for long lists?  Which method is fastest for short lists?  At what size <code class="docutils literal notranslate"><span class="pre">N</span></code> should you switch from one method to the other?</p></li>
+<li><p>Add another method to the plot, by defining your own function <code class="docutils literal notranslate"><span class="pre">make_sq_5</span></code> that mirros the basic structure of the other <code class="docutils literal notranslate"><span class="pre">make_sq</span></code> functions.  Note that your function must create the list in a different way, but it should still take the same parameter <code class="docutils literal notranslate"><span class="pre">N</span></code> and return a list or numpy array.  Create the plot with your function added to the other four, and compare the performance of your method to the others.</p></li>
+<li><p>Create a function with <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">inflate(S):</span></code> which takes as input a string <code class="docutils literal notranslate"><span class="pre">S</span></code> and returns a string in which the 1st letter of <code class="docutils literal notranslate"><span class="pre">S</span></code> appears once, and the second letter appears twice, the third letter appears three times, etc.  For example, <code class="docutils literal notranslate"><span class="pre">inflate('Hello')</span></code> should return the string <code class="docutils literal notranslate"><span class="pre">'Heelllllllooooo'</span></code>.  You must use a loop of the form <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">j,letter</span> <span class="pre">in</span> <span class="pre">enumerate(S):</span></code>, and <em>no other loops</em>!</p></li>
+</ol>
+<p>Put your solutions here.</p>
+</section>
+<section id="final-challenges">
+<h2>Final challenges!<a class="headerlink" href="#final-challenges" title="Permalink to this heading">#</a></h2>
+<p>Please turn in your notebooks with your attempts on <strong>two</strong> of the challenges below.  <strong>Only two</strong> will be graded.</p>
+<section id="challenge-1">
+<h3>Challenge 1<a class="headerlink" href="#challenge-1" title="Permalink to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(N\)</span> is a positive integer, then <span class="math notranslate nohighlight">\(r_3(N)\)</span> is the number of ways that <span class="math notranslate nohighlight">\(N\)</span> can be expressed as the sum of three squares.  Order and sign matter, so for example
+$<span class="math notranslate nohighlight">\(6 = 1^2 + 1^2 + 2^2 = (-1)^2 + 1^2 + 2^2 = 2^2 + (-1)^2 + (-1)^2 = \cdots\)</span><span class="math notranslate nohighlight">\(
+These are all different ways of expressing 6 as the sum of three squares.  In fact, \)</span>r_3(6) = 8 \cdot 3 = 24$.  The 8 comes from the fact that there are eight sign-choices, and the 3 comes from the three orderings (1,1,2) and (1,2,1) and (2,1,1).</p>
+<p>In other words, <span class="math notranslate nohighlight">\(r_3(N)\)</span> is the number of elements in the following set:
+$<span class="math notranslate nohighlight">\(\{ (a,b,c) \in {\mathbb Z}^3 : a^2 + b^2 + c^2 = N \}.\)</span>$</p>
+<p>Write a function that computes <span class="math notranslate nohighlight">\(r_3(N)\)</span> as efficiently as you can, for somewhat large values of <span class="math notranslate nohighlight">\(N\)</span> (e.g., <span class="math notranslate nohighlight">\(N \approx 1000\)</span>).</p>
+<p>You can check whether your function is behaving correctly, by comparing to the values found at the <a class="reference external" href="https://oeis.org/A005875">Online Encyclopedia of Integer Sequences</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rep_three</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">R</span> <span class="c1"># The result of your function should be R.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rep_three</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="c1"># This should output 24.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-2">
+<h3>Challenge 2<a class="headerlink" href="#challenge-2" title="Permalink to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(r\)</span> is a positive real number, then the area of the circle of radius <span class="math notranslate nohighlight">\(r\)</span> is <span class="math notranslate nohighlight">\(\pi r^2\)</span>.  If you place this circle around the origin, on a sheet of graph paper, then you will find <em>about</em> <span class="math notranslate nohighlight">\(\pi r^2\)</span> “grid points” inside this circle.  The grid points inside the circle form the set
+$<span class="math notranslate nohighlight">\(S = \{ (x,y) \in {\mathbb Z}^2 : x^2 + y^2 &lt; r^2 \}.\)</span>$</p>
+<p>Define <span class="math notranslate nohighlight">\(E(r) = \pi r^2 - \# S\)</span> to be the “error” – the difference between the area of the circle and the number of grid points within the circle.</p>
+<p>Create a plot with <span class="math notranslate nohighlight">\(r\)</span> on the horizontal axis and <span class="math notranslate nohighlight">\(E(r)\)</span> on the y-axis.  Try to accomplish this as efficiently as possible, where <span class="math notranslate nohighlight">\(r\)</span> ranges from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(1000\)</span>.</p>
+<p>Can you come up with a good bound <span class="math notranslate nohighlight">\(\vert E(r) \vert \leq f(r)\)</span> for some nice function <span class="math notranslate nohighlight">\(f(r)\)</span>, just by looking at your plot?  I.e., your plot of <span class="math notranslate nohighlight">\(E(r)\)</span> should be bounded above by the graph of <span class="math notranslate nohighlight">\(y = f(r)\)</span> and below by the graph of <span class="math notranslate nohighlight">\(y = -f(r)\)</span>.  If you can come up with such a bound, plot it too.</p>
+</section>
+<section id="challenge-3">
+<h3>Challenge 3<a class="headerlink" href="#challenge-3" title="Permalink to this heading">#</a></h3>
+<p>The following result was found by Euler, but I’ve changed his numbers to <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> to make your life hard.</p>
+<p>Theorem:  A prime number <span class="math notranslate nohighlight">\(p\)</span> can be expressed in the form <span class="math notranslate nohighlight">\(x^2 + 3 y^2\)</span> if and only if <span class="math notranslate nohighlight">\(p\)</span> is congruent to <span class="math notranslate nohighlight">\(A\)</span> modulo <span class="math notranslate nohighlight">\(B\)</span> (i.e., <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">%</span> <span class="pre">B</span> <span class="pre">==</span> <span class="pre">A</span></code>).</p>
+<p>Use experimental techniques to determine <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.  Now try the same for <span class="math notranslate nohighlight">\(3\)</span> replaced by <span class="math notranslate nohighlight">\(4,5,6,7,8,9\)</span>.</p>
+</section>
+<section id="challenge-4">
+<h3>Challenge 4<a class="headerlink" href="#challenge-4" title="Permalink to this heading">#</a></h3>
+<p>Pascal’s triangle has <span class="math notranslate nohighlight">\(1\)</span> in the first row, then <span class="math notranslate nohighlight">\(1, 1\)</span> in the second rod, then <span class="math notranslate nohighlight">\(1,2,1\)</span> in the third row, etc.  One can place these numbers in a triangle, with “rows” as diagonals, as drawn below.</p>
+<p>1 1 1 1 1 1</p>
+<p>1 2 3 4 5</p>
+<p>1 3 6 10</p>
+<p>1 4 10</p>
+<p>1 5</p>
+<p>1</p>
+<p>Et cetera.</p>
+<p>Turn these numbers into black and white dots, depending on whether they are even (black) or odd (white).  This produces an image like the following:</p>
+<p>X X X X X X</p>
+<p>X O X O X</p>
+<p>X X O O</p>
+<p>X O O</p>
+<p>X X</p>
+<p>X</p>
+<p>Now perform this in PIL, to create an image that fills the top-left triangle in an image of at least 200 x 200 pixels.  You should <em>not</em> be computing giant numbers like 200 factorial!  Each row of Pascal’s triangle can be computed from the previous by addition… and you can perform this “mod 2” all the way through.</p>
+<p>Extra fun:  instead of black/white dots for even/odd, try colors based on remainders after dividing by three, by four, etc.</p>
+</section>
+<section id="challenge-5">
+<h3>Challenge 5<a class="headerlink" href="#challenge-5" title="Permalink to this heading">#</a></h3>
+<p>Often when visualizing time-series data, it makes sense to look not at day-by-day changes, but rather at a 7-day rolling average.  For example, when looking at Covid-19 cases, there are reporting fluctuations from day to day, so instead it is usually better to look at the average number of cases over the previous 7 days.</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">rolling(A,</span> <span class="pre">window=7):</span></code> which takes as input a one-dimensional numpy array <code class="docutils literal notranslate"><span class="pre">A</span></code>, and a parameter <code class="docutils literal notranslate"><span class="pre">window</span></code> whose default value is <code class="docutils literal notranslate"><span class="pre">7</span></code>.  The function must return an array <code class="docutils literal notranslate"><span class="pre">R</span></code> whose length is shorter than the length of <code class="docutils literal notranslate"><span class="pre">A</span></code>.  The entry <code class="docutils literal notranslate"><span class="pre">R[j]</span></code> should be the <strong>average</strong> of <code class="docutils literal notranslate"><span class="pre">A[j]</span></code>, <code class="docutils literal notranslate"><span class="pre">A[j+1]</span></code>, etc., up to <code class="docutils literal notranslate"><span class="pre">A[j+window-1]</span></code>.</p>
+<p>Then use this function and matplotlib to produce a plot:  a line plot of the array <code class="docutils literal notranslate"><span class="pre">A</span></code> produced below, and a line plot of the 7-day rolling average <code class="docutils literal notranslate"><span class="pre">R</span></code> produced by your function.  These plots should be on the same figure, and clearly labeled.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here is the code to produce your test array A.</span>
+<span class="c1"># Please use this array in your plot!</span>
+
+<span class="n">x_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="n">x_array</span><span class="o">/</span><span class="mi">200</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Please use this code to import matplotlib.</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here is a plot of the array, to get you started.  </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_array</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># Now it&#39;s time to write your function to produce the 7-day rolling average, add it to the plot, and make everything clear and labeled.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repetition-and-benchmarking">Repetition and benchmarking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-challenges">Final challenges!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-1">Challenge 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-2">Challenge 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-3">Challenge 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-4">Challenge 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-5">Challenge 5</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marty Weissman and Suzana Șerboi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+     <div style="text-align: left;">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

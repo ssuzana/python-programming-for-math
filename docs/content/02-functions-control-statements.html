@@ -1,0 +1,1435 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>3. Functions and Control Statements &#8212; Python Programming for Math</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/02-functions-control-statements';</script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Lists" href="03-lists.html" />
+    <link rel="prev" title="2. Computing with Python: an Introduction" href="01-computing-with-python.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-python-4-math.png" class="logo__image only-light" alt="Python Programming for Math - Home"/>
+    <script>document.write(`<img src="../_static/logo-python-4-math.png" class="logo__image only-dark" alt="Python Programming for Math - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00-colab-intro.html">1. Google Colab Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-computing-with-python.html">2. Computing with Python:  an Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Functions and Control Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-lists.html">4. Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-numpy-intro-and-visuzalization.html">5. Introduction to NumPy and Visualization</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ssuzana/python-programming-for-math" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ssuzana/python-programming-for-math/edit/master/_build/html/content/02-functions-control-statements.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ssuzana/python-programming-for-math/issues/new?title=Issue%20on%20page%20%2Fcontent/02-functions-control-statements.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/02-functions-control-statements.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Functions and Control Statements</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-python-functions">3.1. Getting started with Python functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-statements">3.2. Control statements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-errors-by-raising-exceptions">3.3. Handling errors by raising exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops-and-implementation-of-the-eucidean-algorithm">3.4. While loops and implementation of the Eucidean algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-euclidean-algorithm-with-a-while-loop">3.4.1. The Euclidean algorithm with a while loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-and-explorations">3.5. Exercises and explorations</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="functions-and-control-statements">
+<h1><span class="section-number">3. </span>Functions and Control Statements<a class="headerlink" href="#functions-and-control-statements" title="Permalink to this heading">#</a></h1>
+<p>A distinguishing property of <em>programming</em> languages is that the programmer can create their own <em>functions</em>.  Creating a <em>function</em> is like teaching the computer a new trick.  Typically a function will receive some data as <em>input</em>, will perform an <em>algorithm</em> involving the input data, and will <em>output</em> data when the algorithm terminates.</p>
+<p>In this part, we explore Python functions.  We also explore control statements, which allow a program to behave in different ways for different inputs.  We also introduce the <em>while loop</em>, a loop whose repetition can be more carefully controlled than a <em>for loop</em>.  As an application of these techniques, we implement the Euclidean algorithm as a Python function in a few ways, to effectively find the GCD of integers.</p>
+<p>At the end, you will be prepared to explore the Collatz conjecture.</p>
+<section id="getting-started-with-python-functions">
+<h2><span class="section-number">3.1. </span>Getting started with Python functions<a class="headerlink" href="#getting-started-with-python-functions" title="Permalink to this heading">#</a></h2>
+<p>A <em>function</em> in Python is a construction which takes input data, performs some actions, and outputs data.  It is best to start with a few examples and break down the code.  Here is a function <code class="docutils literal notranslate"><span class="pre">square</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To see “under the hood” what Python is doing, we import the Python disassembler.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dis</span> <span class="kn">import</span> <span class="n">dis</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dis</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2           0 LOAD_FAST                0 (x)
+              2 LOAD_FAST                0 (x)
+              4 BINARY_MULTIPLY
+              6 STORE_FAST               1 (answer)
+
+  3           8 LOAD_FAST                1 (answer)
+             10 RETURN_VALUE
+</pre></div>
+</div>
+</div>
+</div>
+<p>When you run the code block, you probably didn’t see anything happen.  But you have effectively taught your computer a new trick, increasing the vocabulary of commands it understands through the Python interpreter.</p>
+<p>More specifically, Python has turned your neat “square function” into a series of very quickly runnable commands (“LOAD_FAST” and “BINARY_MULTIPLY”).  That way, every time you want to use your square function, Python will just go through the same series of quick operations.</p>
+<p>You don’t really need to know the “disassembled” square function above… you can use the <code class="docutils literal notranslate"><span class="pre">square</span></code> command as you wish.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">square</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>144
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">square</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.25
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s break down the syntax of the <em>function declaration</em>, line by line.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">answer</span>
+</pre></div>
+</div>
+<p>The first line begins with the Python reserved word <code class="docutils literal notranslate"><span class="pre">def</span></code>.  (So don’t use <code class="docutils literal notranslate"><span class="pre">def</span></code> as a variable name!).  The word <code class="docutils literal notranslate"><span class="pre">def</span></code> stands for “define” and it defines a function called <code class="docutils literal notranslate"><span class="pre">square</span></code>.  After the function name <code class="docutils literal notranslate"><span class="pre">square</span></code> comes parentheses <code class="docutils literal notranslate"><span class="pre">(x)</span></code> containing the <strong>argument</strong> <code class="docutils literal notranslate"><span class="pre">x</span></code>.  The <em>arguments</em> or <em>parameters</em> of a function refer to the input data.  Even if your function has no arguments, you need parentheses.  The argument <code class="docutils literal notranslate"><span class="pre">x</span></code> is used to name whatever number is input into the <code class="docutils literal notranslate"><span class="pre">square</span></code> function.</p>
+<p>At the end of the function declaration line is a colon <code class="docutils literal notranslate"><span class="pre">:</span></code> and the following two lines are indented.  As in the case of for loops, the colon and indentation are signals of <em>scope</em>.  Everything on the indented lines is considered within the <em>scope of the function</em> and is carried out when the function is used later.</p>
+<p>The second line <code class="docutils literal notranslate"><span class="pre">answer</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">x</span></code> is the beginning of the scope of the function.  It declares a variable <code class="docutils literal notranslate"><span class="pre">answer</span></code> and sets the value to be <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">x</span></code>.  So if the argument <code class="docutils literal notranslate"><span class="pre">x</span></code> is 12, then <code class="docutils literal notranslate"><span class="pre">answer</span></code> will be set to 144.  The variable <code class="docutils literal notranslate"><span class="pre">answer</span></code>, being declared within the scope of the function, will not be accessible outside the scope of the function.  It is called a <strong>local variable</strong>.</p>
+<p>The last line <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">answer</span></code> contains the Python reserved word <code class="docutils literal notranslate"><span class="pre">return</span></code>, which terminates the function and outputs the value of the variable <code class="docutils literal notranslate"><span class="pre">answer</span></code>.  So when you apply the function with the command <code class="docutils literal notranslate"><span class="pre">square(1.5)</span></code>, the number <code class="docutils literal notranslate"><span class="pre">1.5</span></code> is <code class="docutils literal notranslate"><span class="pre">passed</span></code> as the argument <code class="docutils literal notranslate"><span class="pre">x</span></code>, and <code class="docutils literal notranslate"><span class="pre">answer</span></code> is <code class="docutils literal notranslate"><span class="pre">2.25</span></code>, and that number <code class="docutils literal notranslate"><span class="pre">2.25</span></code> becomes the output.</p>
+<p>A function does not have to return a value.  Some functions might just provide some information.  Here is a function which displays the result of division with remainder as a sentence with addition and multiplication.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">display_divmod</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">quotient</span> <span class="o">=</span> <span class="n">a</span> <span class="o">//</span> <span class="n">b</span> <span class="c1"># Integer division</span>
+    <span class="n">remainder</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span> <span class="c1">#</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2"> (</span><span class="si">{}</span><span class="s2">) + </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">quotient</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">remainder</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Below, we can run the function to see the output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display_divmod</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23 = 4 (5) + 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that this function has no <code class="docutils literal notranslate"><span class="pre">return</span></code> line.  The function terminates automatically at the end of its scope.</p>
+<p>The function also uses Python’s <strong>string formatting</strong>.  This has changed between Python 2.x and 3.x, and this notebook uses Python 3.x syntax.</p>
+<p>String formatting allows you to insert placeholders like <code class="docutils literal notranslate"><span class="pre">{}</span></code> within a string, and later fill those places with a list of things.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;My favorite number is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">17</span><span class="p">))</span>  <span class="c1"># The .format &quot;method&quot; substitutes 17 for {}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My favorite number is 17
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> + </span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="o">+</span><span class="mi">12</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13 + 12 = 25
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">format</span></code> command is an example of a <strong>string method</strong>.  It has the effect of replacing all placeholders <code class="docutils literal notranslate"><span class="pre">{}</span></code> by the its inputs, in sequence.  There is an intricate syntax for these placeholders, to allow one to match placeholders with values in different orders, and to format different kinds of values.  Here is the <a class="reference external" href="https://docs.python.org/3/library/string.html#formatstrings">official reference for string formatting in Python 3.x</a>.  We will only use the most basic features, exhibited below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The number </span><span class="si">{}</span><span class="s2"> comes before </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># This should be familiar.</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The number </span><span class="si">{1}</span><span class="s2"> comes before </span><span class="si">{0}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># What happens?</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The number </span><span class="si">{1}</span><span class="s2"> comes before </span><span class="si">{1}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># Got it now?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number 1 comes before 2.
+The number 2 comes before 1.
+The number 2 comes before 2.
+</pre></div>
+</div>
+</div>
+</div>
+<p>By placing a number in the placeholder, like <code class="docutils literal notranslate"><span class="pre">{1}</span></code>, one can fill in the placeholders with the values in a different order, or repeat the same value.  The format method takes multiple parameters, and they are numbered:  parameter 0, parameter 1, parameter 2, etc..  So the placeholder <code class="docutils literal notranslate"><span class="pre">{1}</span></code> will be replaced by the second parameter (parameter 1).  It’s confusing at first, but Python almost always starts counting at zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pi is approximately </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">3.14159265</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pi is approximately </span><span class="si">{0:f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">3.14159265</span><span class="p">))</span> <span class="c1"># The &quot;f&quot; in &quot;0:f&quot; formats the float.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pi is approximately </span><span class="si">{0:0.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">3.14159265</span><span class="p">))</span> <span class="c1"># Choose 3 digits of precision.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pi is approximately 3.14159265
+pi is approximately 3.141593
+pi is approximately 3.142
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you give some information about how the placeholder is being used, the format method will format things more nicely for printing.  The placeholder <code class="docutils literal notranslate"><span class="pre">{0:f}</span></code> will be replaced by parameter 0, and it will be formatted in a way that is nice for floats (hence the <code class="docutils literal notranslate"><span class="pre">f</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:d}</span><span class="s2"> is a pretty big integer.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">100</span><span class="p">))</span> <span class="c1"># d is the formatting code for integers.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:f}</span><span class="s2"> is an integer, formatted like a float.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:f}</span><span class="s2"> is a float, of course.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2"> is a string.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Hi there!&#39;</span><span class="p">))</span> <span class="c1"># s is the formatting code for strings.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1267650600228229401496703205376 is a pretty big integer.
+1267650600228229401496703205376.000000 is an integer, formatted like a float.
+0.142857 is a float, of course.
+Hi there! is a string.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Don&#39;t try formatting things outside of their type!</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:d}</span><span class="s2"> will give us an error message.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#  Don&#39;t try formatting things outside of their type!</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:d}</span><span class="s2"> will give us an error message.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">))</span>
+
+<span class="ne">ValueError</span>: Unknown format code &#39;d&#39; for object of type &#39;float&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>  <span class="c1"># Make sure the square root function is loaded.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The square root of </span><span class="si">{0:d}</span><span class="s2"> is about </span><span class="si">{1:f}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">1000</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The square root of 1000 is about 31.622777.
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>F-strings</strong> provide a more concise and convenient way to embed python expressions inside string literals for formatting. Their syntax resembles that of <code class="docutils literal notranslate"><span class="pre">.format()</span></code>, yet it’s more succinct. Simply start your string literal with a lowercase or uppercase ‘f’ and insert your values, objects, or expressions within curly brackets at designated spots. Here are a few examples of how you can use f-strings in Python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_num</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;My favorite number is </span><span class="si">{</span><span class="n">my_num</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My favorite number is 17
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Alice&quot;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, my name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> and I am </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, my name is Alice and I am 21 years old.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The sum of </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The sum of 10 and 20 is 30.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pi value with 2 decimal places: </span><span class="si">{</span><span class="n">pi</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pi value with 2 decimal places: 3.14
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="control-statements">
+<h2><span class="section-number">3.2. </span>Control statements<a class="headerlink" href="#control-statements" title="Permalink to this heading">#</a></h2>
+<p>It is important for a computer program to behave differently under different circumstances.  The simplest control statements, <code class="docutils literal notranslate"><span class="pre">if</span></code> and its relative <code class="docutils literal notranslate"><span class="pre">else</span></code>, can be used to tell Python to carry out different actions depending on the value of a boolean variable.  The following function exhibits the syntax.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="k">2</span> == 0:
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> is even.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> is odd.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_even</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17 is odd.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_even</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1000 is even.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>The broad syntax of the function should be familiar.  We have created a function called <code class="docutils literal notranslate"><span class="pre">is_even</span></code> with one argument called <code class="docutils literal notranslate"><span class="pre">n</span></code>.  The body of the function uses the <strong>control statement</strong> <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">n%2</span> <span class="pre">==</span> <span class="pre">0:</span></code>.  Recall that <code class="docutils literal notranslate"><span class="pre">n%2</span></code> gives the remainder after dividing <code class="docutils literal notranslate"><span class="pre">n</span></code> by <code class="docutils literal notranslate"><span class="pre">2</span></code>.  Thus <code class="docutils literal notranslate"><span class="pre">n%2</span></code> is 0 or 1, depending on whether <code class="docutils literal notranslate"><span class="pre">n</span></code> is even or odd.  Therefore the <strong>boolean</strong> <code class="docutils literal notranslate"><span class="pre">n%2</span> <span class="pre">==</span> <span class="pre">0</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">n</span></code> is even, and <code class="docutils literal notranslate"><span class="pre">False</span></code> if <code class="docutils literal notranslate"><span class="pre">n</span></code> is odd.</p>
+<p>The next two lines (the first <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">return</span></code> statements) are within the <strong>scope</strong> of the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">&lt;boolean&gt;:</span></code> statement, as indicated by the colon and the indentation.  The <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">&lt;boolean&gt;:</span></code> statement tells the Python interpreter to perform the statements within the scope if the boolean is <code class="docutils literal notranslate"><span class="pre">True</span></code>, and to ignore the statements within the scope if the boolean is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Putting it together, we can analyze the code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> is even.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">n</span></code> is even, then the Python interpreter will print a sentence of the form <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">is</span> <span class="pre">even</span></code>.  Then the interpreter will return (output) the value <code class="docutils literal notranslate"><span class="pre">True</span></code> and the function will terminate.  If <code class="docutils literal notranslate"><span class="pre">n</span></code> is odd, the Python interpreter will ignore the two lines of scope.</p>
+<p>Often we don’t just want Python to <em>do nothing</em> when a condition is not satisfied.  In the case above, we would rather Python tell us that the number is odd.  The <code class="docutils literal notranslate"><span class="pre">else:</span></code> control statement tells Python what to do in case the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">&lt;boolean&gt;:</span></code> control statement receives a <code class="docutils literal notranslate"><span class="pre">False</span></code> boolean.  We analyze the code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> is odd.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">return</span></code> commands are within the scope of the <code class="docutils literal notranslate"><span class="pre">else:</span></code> control statement.  So when the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement receives a false signal (the number <code class="docutils literal notranslate"><span class="pre">n</span></code> is odd), the program prints a sentence of the form <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">is</span> <span class="pre">odd.</span></code> and then returns the value <code class="docutils literal notranslate"><span class="pre">False</span></code> and terminates the function.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">is_even</span></code> is a verbose, or “talkative” sort of function.  Such a function is sometimes useful in an interactive setting, where the programmer wants to understand everything that’s going on.  But if the function had to be called a million times, the screen would fill with printed sentences!  In practice, an efficient and silent function <code class="docutils literal notranslate"><span class="pre">is_even</span></code> might look like the following.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="k">2</span> == 0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_even</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and an <code class="docutils literal notranslate"><span class="pre">if</span></code> control statement, used together, allow us to carry out a <strong>brute force</strong> search.  We can search for factors in order to check whether a number is prime.  Or we can look for solutions to an equation until we find one.</p>
+<p>One thing to note:  the function below begins with a block of text between a triple-quote (three single-quotes when typing).  That text is called a <strong>docstring</strong> and it is meant to document what the function does.  Writing clear docstrings becomes more important as you write longer programs, collaborate with other programmers, and when you want to return months or years later to use a program again.  There are different style conventions for docstrings; for example, here are <a class="reference external" href="https://google.github.io/styleguide/pyguide.html?showone=Comments#Comments">Google’s docstring conventions</a>.  We take a less formal approach.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Checks whether the argument n is a prime number.</span>
+<span class="sd">    Uses a brute force search for factors between 1 and n.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>  <span class="c1"># the list of numbers 2,3,...,n-1.</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="k">j</span> == 0:  # is n divisible by j?
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2"> is a factor of </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>An important note:  the <code class="docutils literal notranslate"><span class="pre">return</span></code> keyword <strong>terminates</strong> the function.  So as soon as a factor is found, the function terminates and outputs <code class="docutils literal notranslate"><span class="pre">False</span></code>.  If no factor is found, then the function execution survives past the loop, and the line <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">True</span></code> is executed to terminate the function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_prime</span><span class="p">(</span><span class="mi">91</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7 is a factor of 91.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="mi">101</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>TRY IT!</strong> Try the <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> function on bigger numbers – try numbers with 4 digits, 5 digits, 6 digits.  Where does it start to slow down?  Do you get any errors when the numbers are large?  Make sure to save your work first, just in case this crashes your computer!</p>
+<p>There are two limiting factors, which we study in more detail later.  These are <strong>time</strong> and <strong>space</strong> (your computer’s memory space).  As the loop of <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> goes on and on, it might take your computer a long time!  If each step of the loop takes only a nanosecond (1 billionth of a second), the loop would take about a second when executing <code class="docutils literal notranslate"><span class="pre">is_prime(1000000001)</span></code>.  If you tried <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> on a much larger number, like <code class="docutils literal notranslate"><span class="pre">is_prime(2**101</span> <span class="pre">-</span> <span class="pre">1)</span></code>, the loop would take longer than the lifetime of the Earth.</p>
+<p>The other issue that can arise is a problem with <em>space</em>.  In Python 3.x, the <code class="docutils literal notranslate"><span class="pre">range(2,n)</span></code> cleverly <em>avoids</em> storing all the numbers between <code class="docutils literal notranslate"><span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">n-1</span></code> in memory.  It just remembers the endpoints, and how to proceed from one number to the next.  In the older version, Python 2.x, the range command <code class="docutils literal notranslate"><span class="pre">range(2,n)</span></code> would have tried to store the entire list of numbers <code class="docutils literal notranslate"><span class="pre">[2,3,4,...,n-1]</span></code> in the memory of your computer.  Your computer has some (4 or 8 or 16, perhaps) gigabytes of memory (RAM).  A gigabyte is a billion bytes, and a byte is enough memory to store a number between 0 and 255.  (More detail about this later!).  So a gigabyte will not even hold a billion numbers.  So our <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> function would have led to memory problems in Python 2.x, but in Python 3.x we don’t have to worry (for now) about space.</p>
+</section>
+<section id="handling-errors-by-raising-exceptions">
+<h2><span class="section-number">3.3. </span>Handling errors by raising exceptions<a class="headerlink" href="#handling-errors-by-raising-exceptions" title="Permalink to this heading">#</a></h2>
+<p>In the previous batch of exercises, we tried to modify functions to be a bit more intelligent – identifying when numbers were “too big” for example.  There’s a professional way to handle these situations, by raising <em>exceptions</em>.  Here is the <a class="reference external" href="https://docs.python.org/3/tutorial/errors.html">official documentation on errors and exceptions</a>.  We will focus on raising exceptions to catch “bad inputs” to functions.  Let’s revisit our <code class="docutils literal notranslate"><span class="pre">is_even</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="k">2</span> == 0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_even</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>  <span class="c1"># What will this do?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">3.14</span><span class="o">%</span><span class="k">2</span>  # Well, this explains it!
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1400000000000001
+</pre></div>
+</div>
+</div>
+</div>
+<p>Although the output of <code class="docutils literal notranslate"><span class="pre">is_even(3.14)</span></code> might be what you want, a smarter function might let the user know that 3.14 should not be input into <code class="docutils literal notranslate"><span class="pre">is_even</span></code>.  We commonly ask whether <em>integers</em> are even or odd; if a non-integer ends up input to <code class="docutils literal notranslate"><span class="pre">is_even</span></code>, it might be a sign of a bug elsewhere.  One possibility is to modify the function by manually printing an error message.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="k">2</span> == 0)
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bad input!  Please input integers only.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_even</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">is_even</span><span class="p">(</span><span class="mf">3.14</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bad input!  Please input integers only.
+None
+</pre></div>
+</div>
+</div>
+</div>
+<p>This behavior is a bit better.  The output of the function is neither True nor False, when a non-integer is input.  Instead, the smarter function outputs <code class="docutils literal notranslate"><span class="pre">None</span></code>, which is exactly what it sounds like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># A zen command.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NoneType
+</pre></div>
+</div>
+</div>
+</div>
+<p>Instead of manually using a print command and returning None, we can use Python’s built-in <code class="docutils literal notranslate"><span class="pre">exception</span></code> class.  Raising exceptions is the Pythonic way of catching errors, and this will make things smoother in the long term.  Here’s a new and safe <code class="docutils literal notranslate"><span class="pre">is_even</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="k">2</span> == 0)
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Only integers can be even or odd.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_even</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_even</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ssuzana</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">programming</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">math</span><span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="mi">02</span><span class="o">-</span><span class="n">functions</span><span class="o">-</span><span class="n">control</span><span class="o">-</span><span class="n">statements</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">63</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/02-functions-control-statements.ipynb#Y121sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">is_even</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ssuzana</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">programming</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">math</span><span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="mi">02</span><span class="o">-</span><span class="n">functions</span><span class="o">-</span><span class="n">control</span><span class="o">-</span><span class="n">statements</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">63</span> <span class="n">line</span> <span class="mi">5</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/02-functions-control-statements.ipynb#Y121sZmlsZQ%3D%3D?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">return</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="k">2</span> == 0)
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/02-functions-control-statements.ipynb#Y121sZmlsZQ%3D%3D?line=3&#39;</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/02-functions-control-statements.ipynb#Y121sZmlsZQ%3D%3D?line=4&#39;</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Only integers can be even or odd.&#39;</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: Only integers can be even or odd.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Instead of manually printing the error message and returning <code class="docutils literal notranslate"><span class="pre">None</span></code>, we have raised a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.  This gives information about the kind of error, and a custom error message is displayed at the end.  Type errors are meant for situations where a variable belongs to the wrong type.  <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> is just one kind of “exception” – the full built-in hierarchy of exceptions can be found in the <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy">official Python documentation</a>.</p>
+<p>Another kind of exception is the <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.  It seems similar to <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> at first, but <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is meant to catch an input that has a “bad” value, even if it is the right type.  For example, here is a square root function that only works with positive input.  It should raise an exception (error message) when a negative number is input.  Both positive and negative numbers can be represented as floats, so the error doesn’t represent the <em>wrong type</em>.  The error represents a <em>bad value</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Estimates the square root of a positive number x.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot approximate square root of negative numbers.&#39;</span><span class="p">)</span>
+    <span class="n">guess</span><span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span> <span class="c1"># A decent place to start</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="c1"># A dangerous loop!  See next section...</span>
+        <span class="n">new_guess</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">guess</span> <span class="o">+</span> <span class="n">x</span><span class="o">/</span><span class="n">guess</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">new_guess</span> <span class="o">-</span> <span class="n">guess</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">.000000001</span><span class="p">:</span> <span class="c1"># close enough!</span>
+            <span class="k">return</span> <span class="n">new_guess</span>
+        <span class="n">guess</span> <span class="o">=</span> <span class="n">new_guess</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># This should be ok.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7320508075688772
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ssuzana</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">programming</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">math</span><span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="mi">02</span><span class="o">-</span><span class="n">functions</span><span class="o">-</span><span class="n">control</span><span class="o">-</span><span class="n">statements</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">67</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/02-functions-control-statements.ipynb#Y125sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ssuzana</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">programming</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">math</span><span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="mi">02</span><span class="o">-</span><span class="n">functions</span><span class="o">-</span><span class="n">control</span><span class="o">-</span><span class="n">statements</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">67</span> <span class="n">line</span> <span class="mi">6</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/02-functions-control-statements.ipynb#Y125sZmlsZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">      &lt;a href=&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/02-functions-control-statements.ipynb#Y125sZmlsZQ%3D%3D?line=2&#39;&gt;3&lt;/a&gt; Estimates the square root of a positive number x.</span>
+<span class="s1">      &lt;a href=&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/02-functions-control-statements.ipynb#Y125sZmlsZQ%3D%3D?line=3&#39;&gt;4&lt;/a&gt; &#39;&#39;&#39;</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/02-functions-control-statements.ipynb#Y125sZmlsZQ%3D%3D?line=4&#39;</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/02-functions-control-statements.ipynb#Y125sZmlsZQ%3D%3D?line=5&#39;</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot approximate square root of negative numbers.&#39;</span><span class="p">)</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/02-functions-control-statements.ipynb#Y125sZmlsZQ%3D%3D?line=6&#39;</span><span class="o">&gt;</span><span class="mi">7</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">guess</span><span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span> <span class="c1"># A decent place to start</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/ssuzana/python-programming-for-math/content/02-functions-control-statements.ipynb#Y125sZmlsZQ%3D%3D?line=7&#39;</span><span class="o">&gt;</span><span class="mi">8</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="c1"># A dangerous loop!  See next section...</span>
+
+<span class="ne">ValueError</span>: Cannot approximate square root of negative numbers.
+</pre></div>
+</div>
+</div>
+</div>
+<p>By raising the <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>, we have avoided an endless loop… the sort of problem that crashes computers!  If you know that your function is only meant for certain kinds of inputs, it is best to catch errors by raising exceptions.</p>
+</section>
+<section id="while-loops-and-implementation-of-the-eucidean-algorithm">
+<h2><span class="section-number">3.4. </span>While loops and implementation of the Eucidean algorithm<a class="headerlink" href="#while-loops-and-implementation-of-the-eucidean-algorithm" title="Permalink to this heading">#</a></h2>
+<p>We <em>almost</em> have all the tools we need to implement the Euclidean algorithm.  The last tool we will need is the <strong>while loop</strong>.  We have seen the <em>for loop</em> already, which is very useful for iterating over a range of numbers.  The Euclidean algorithm involves repetition, but there is no way to know in advance how many steps it will take.  The while loop allows us to repeat a process as long as a boolean value (sometimes called a <strong>flag</strong>) is True.  The following countdown example illustrates the structure of a while loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">current_value</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="k">while</span> <span class="n">current_value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># The condition (current_value &gt; 0) is checked before every instance of the scope!</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">current_value</span><span class="p">)</span>
+        <span class="n">current_value</span> <span class="o">=</span> <span class="n">current_value</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We are out of the while loop since the current value is 0.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countdown</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+We are out of the while loop since the current value is 0.
+</pre></div>
+</div>
+</div>
+</div>
+<p>The while loop syntax begins with <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">&lt;boolean&gt;:</span></code> and the following indented lines comprise the scope of the loop.  If the boolean is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then the scope of the loop is executed.  If the boolean is <code class="docutils literal notranslate"><span class="pre">True</span></code> again afterwards, then the scope of the loop is executed again.  And again and again and so on.</p>
+<p>This can be a <strong>dangerous process</strong>!  For example, what would happen if you made a little typo and the last line of the while loop read <code class="docutils literal notranslate"><span class="pre">current_value</span> <span class="pre">=</span> <span class="pre">current_value</span> <span class="pre">+</span> <span class="pre">1</span></code>?  The numbers would increase and increase… and the boolean <code class="docutils literal notranslate"><span class="pre">current_value</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> would <strong>always</strong> be <code class="docutils literal notranslate"><span class="pre">True</span></code>.  Therefore the loop would never end.  Bigger and bigger numbers would scroll down your computer screen.</p>
+<p>You might panic under such a circumstance, and maybe turn your computer off to stop the loop.  Here is some advice for when you get stuck in such a neverending loop, and you’re using Google Colab.</p>
+<ol class="arabic simple">
+<li><p>Back up your work often.  When you’re programming, make sure everything else is saved just in case.</p></li>
+<li><p>Save your programming work (use “Save a copy in GitHub” and/or “Save a copy in Drive”) often, especially before running a cell with a loop for the first time.</p></li>
+<li><p>If you <em>do</em> get stuck in a neverending loop, click on “Runtime… Interrupt execution”.  This will often unstick the loop and allow you to pick up where you left off.</p></li>
+</ol>
+<p>Now, if you’re feeling brave, save your work, change the while loop so that it never ends, and try to recover where you left off.  But be aware that this could cause your computer to freeze or behave erratically, crashing your browser, etc.  Don’t panic… it probably won’t break your computer permanently.</p>
+<p>The neverending loop causes two problems here.  One is with the computer processor, which will be essentially spinning its wheels.  This is called <a class="reference external" href="https://en.wikipedia.org/wiki/Busy_waiting">busy waiting</a>, and the computer will essentially be busy waiting forever.  The other problem is that your loop is printing more and more lines of text into the notebook.  This could easily crash your web browser, which is trying to store and display zillions of lines of numbers.  So be ready for problems!</p>
+<section id="the-euclidean-algorithm-with-a-while-loop">
+<h3><span class="section-number">3.4.1. </span>The Euclidean algorithm with a while loop<a class="headerlink" href="#the-euclidean-algorithm-with-a-while-loop" title="Permalink to this heading">#</a></h3>
+<p>The <strong>Euclidean Algorithm</strong> is a process of repeated division with remainder.  Beginning with two integers <code class="docutils literal notranslate"><span class="pre">a</span></code> (dividend) and <code class="docutils literal notranslate"><span class="pre">b</span></code> (divisor), one computes quotient <code class="docutils literal notranslate"><span class="pre">q</span></code> and remainder <code class="docutils literal notranslate"><span class="pre">q</span></code> to express <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">qb</span> <span class="pre">+</span> <span class="pre">r</span></code>.  Then <code class="docutils literal notranslate"><span class="pre">b</span></code> becomes the dividend and <code class="docutils literal notranslate"><span class="pre">r</span></code> becomes the divisor, and one repeats.  The repetition continues, and the <strong>last nonzero</strong> remainder is the greatest common divisor of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<p>We implement the Euclidean algorithm in a few variations.  The first will be a verbose version, to show the user what happens at every step.  We use a while loop to take care of the repetition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Euclidean_algorithm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">dividend</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="n">divisor</span> <span class="o">=</span> <span class="n">b</span>
+    <span class="k">while</span> <span class="n">divisor</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>   <span class="c1"># Recall that != means &quot;is not equal to&quot;.</span>
+        <span class="n">quotient</span> <span class="o">=</span> <span class="n">dividend</span> <span class="o">//</span> <span class="n">divisor</span>
+        <span class="n">remainder</span> <span class="o">=</span> <span class="n">dividend</span> <span class="o">%</span> <span class="n">divisor</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dividend</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">quotient</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">divisor</span><span class="si">}</span><span class="s2">) + </span><span class="si">{</span><span class="n">remainder</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">dividend</span> <span class="o">=</span> <span class="n">divisor</span>  
+        <span class="n">divisor</span> <span class="o">=</span> <span class="n">remainder</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Euclidean_algorithm</span><span class="p">(</span><span class="mi">133</span><span class="p">,</span> <span class="mi">58</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>133 = 2 (58) + 17
+58 = 3 (17) + 7
+17 = 2 (7) + 3
+7 = 2 (3) + 1
+3 = 3 (1) + 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Euclidean_algorithm</span><span class="p">(</span><span class="mi">1312331323</span><span class="p">,</span> <span class="mi">58123123</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1312331323 = 22 (58123123) + 33622617
+58123123 = 1 (33622617) + 24500506
+33622617 = 1 (24500506) + 9122111
+24500506 = 2 (9122111) + 6256284
+9122111 = 1 (6256284) + 2865827
+6256284 = 2 (2865827) + 524630
+2865827 = 5 (524630) + 242677
+524630 = 2 (242677) + 39276
+242677 = 6 (39276) + 7021
+39276 = 5 (7021) + 4171
+7021 = 1 (4171) + 2850
+4171 = 1 (2850) + 1321
+2850 = 2 (1321) + 208
+1321 = 6 (208) + 73
+208 = 2 (73) + 62
+73 = 1 (62) + 11
+62 = 5 (11) + 7
+11 = 1 (7) + 4
+7 = 1 (4) + 3
+4 = 1 (3) + 1
+3 = 3 (1) + 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is excellent if we want to know every step of the Euclidean algorithm.  If we just want to know the GCD of two numbers, we can be less verbose.  We carefully return the last nonzero remainder after the while loop is concluded.  This last nonzero remainder becomes the divisor when the remainder becomes zero, and then it would become the dividend in the next (unprinted) line.  That is why we return the (absolute value) of the dividend after the loop is concluded.  You might insert a line at the end of the loop, like <code class="docutils literal notranslate"><span class="pre">print(dividend,</span> <span class="pre">divisor,</span> <span class="pre">remainder)</span></code> to help you track the variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">GCD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">dividend</span> <span class="o">=</span> <span class="n">a</span> <span class="c1"># The first dividend is a.</span>
+    <span class="n">divisor</span> <span class="o">=</span> <span class="n">b</span> <span class="c1"># The first divisor is b.</span>
+    <span class="k">while</span> <span class="n">divisor</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>   <span class="c1"># Recall that != means &quot;not equal to&quot;.</span>
+        <span class="n">quotient</span> <span class="o">=</span> <span class="n">dividend</span> <span class="o">//</span> <span class="n">divisor</span>
+        <span class="n">remainder</span> <span class="o">=</span> <span class="n">dividend</span> <span class="o">%</span> <span class="n">divisor</span>
+        <span class="n">dividend</span> <span class="o">=</span> <span class="n">divisor</span>  
+        <span class="n">divisor</span> <span class="o">=</span> <span class="n">remainder</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dividend</span><span class="p">)</span>  <span class="c1">#  abs() is used, since we like our GCDs to be positive.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">dividend</span></code> statement occurs <em>after</em> the scope of the while loop.  So as soon as the <em>divisor</em> variable equals zero, the funtion <code class="docutils literal notranslate"><span class="pre">GCD</span></code> returns the <em>dividend</em> variable and terminates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GCD</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="mi">27</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GCD</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="o">-</span><span class="mi">27</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can refine our code in a few ways.  First, note that the <code class="docutils literal notranslate"><span class="pre">quotient</span></code> variable is never used!  It was nice in the verbose version of the Euclidean algorithm, but plays no role in finding the GCD.  Our refined code reads</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">GCD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">dividend</span> <span class="o">=</span> <span class="n">a</span>  
+    <span class="n">divisor</span> <span class="o">=</span> <span class="n">b</span>  
+    <span class="k">while</span> <span class="n">divisor</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>   <span class="c1"># Recall that != means &quot;not equal to&quot;.</span>
+        <span class="n">remainder</span> <span class="o">=</span> <span class="n">dividend</span> <span class="o">%</span> <span class="n">divisor</span>
+        <span class="n">dividend</span> <span class="o">=</span> <span class="n">divisor</span>  
+        <span class="n">divisor</span> <span class="o">=</span> <span class="n">remainder</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dividend</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>Now there are two slick Python tricks we can use to shorten the code.  The first is called <strong>multiple assignment</strong>.  It is possible to set the values of two variables in a single line of code, with a syntax like below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span>  <span class="c1"># Sets x to 2 and y to 3.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is particular useful for self-referential assignments, because as for ordinary assignment, the right side is evaluated first and then bound to the variables on the left side.  For example, after the line above, try the line below.  Use print statements to see what the values of the variables are afterwards!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span><span class="n">x</span> <span class="c1">#  Guess what this does!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y =&quot;</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = 3
+y = 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can use multiple assignment to turn three lines of code into one line of code.  For the <code class="docutils literal notranslate"><span class="pre">remainder</span></code> variable is only used temporarily before its value is given to the <code class="docutils literal notranslate"><span class="pre">divisor</span></code> variable.  Using multiple assignment, the three lines</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">remainder</span> <span class="o">=</span> <span class="n">dividend</span> <span class="o">%</span> <span class="n">divisor</span>
+<span class="n">dividend</span> <span class="o">=</span> <span class="n">divisor</span>  
+<span class="n">divisor</span> <span class="o">=</span> <span class="n">remainder</span>
+</pre></div>
+</div>
+<p>can be written in one line,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dividend</span><span class="p">,</span> <span class="n">divisor</span> <span class="o">=</span> <span class="n">divisor</span><span class="p">,</span> <span class="n">dividend</span> <span class="o">%</span> <span class="n">divisor</span> <span class="c1"># Evaluations on the right occur before any assignments!</span>
+</pre></div>
+</div>
+<p>Our newly shortened GCD function looks like this.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">GCD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">dividend</span> <span class="o">=</span> <span class="n">a</span>  
+    <span class="n">divisor</span> <span class="o">=</span> <span class="n">b</span>  
+    <span class="k">while</span> <span class="n">divisor</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>   <span class="c1"># Recall that != means &quot;not equal to&quot;.</span>
+        <span class="n">dividend</span><span class="p">,</span> <span class="n">divisor</span> <span class="o">=</span> <span class="n">divisor</span><span class="p">,</span> <span class="n">dividend</span> <span class="o">%</span> <span class="n">divisor</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dividend</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The next trick involves the while loop.  The usual syntax has the form <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">&lt;boolean&gt;:</span></code>.  But if <code class="docutils literal notranslate"><span class="pre">while</span></code> is followed by a numerical type, e.g. <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">&lt;int&gt;:</span></code>, then the scope of the while loop will execute as long as the number is nonzero!  Therefore, the line</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">divisor</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>can be replaced by the shorter line</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">divisor</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>This is truly a trick.  It probably won’t speed anything up, and it does not make your program easier to read for beginners.  So use it if you prefer communicating with experienced Python programmers!  Here is the whole function again.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">GCD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">dividend</span> <span class="o">=</span> <span class="n">a</span>  
+    <span class="n">divisor</span> <span class="o">=</span> <span class="n">b</span>  
+    <span class="k">while</span> <span class="n">divisor</span><span class="p">:</span>   <span class="c1"># Executes the scope if divisor is nonzero.</span>
+        <span class="n">dividend</span><span class="p">,</span> <span class="n">divisor</span> <span class="o">=</span> <span class="n">divisor</span><span class="p">,</span> <span class="n">dividend</span> <span class="o">%</span> <span class="n">divisor</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dividend</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The next optimization is a bit more dangerous for beginners, but it works here.  In general, it can be dangerous to operate directly on the arguments to a function.  But in this setting, it is safe, and makes no real difference to the Python interpreter.  Instead of creating new variables called <code class="docutils literal notranslate"><span class="pre">dividend</span></code> and <code class="docutils literal notranslate"><span class="pre">divisor</span></code>, one can manipulate <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> directly within the function.  If you do this, the GCD function can be shortened to the following.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">GCD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">b</span><span class="p">:</span>   <span class="c1"># I.e., while b != 0.</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try it out.  Try it on some big numbers and see how quick it runs!</span>
+<span class="n">GCD</span><span class="p">(</span><span class="mi">1312331323</span><span class="p">,</span> <span class="mi">58123123</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>This code is essentially optimal, if one wishes to execute the Euclidean algorithm to find the GCD of two integers.  It almost <a class="reference external" href="https://stackoverflow.com/a/18944210">matches the GCD code in a standard Python library</a>.  It might be slightly faster than our original code – but there is a tradeoff here between execution speed and readability of code.  In this and the following lessons, we often optimize enough for everyday purposes, but not so much that readability is lost.</p>
+</section>
+</section>
+<section id="exercises-and-explorations">
+<h2><span class="section-number">3.5. </span>Exercises and explorations<a class="headerlink" href="#exercises-and-explorations" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>What are the signals of scope in Python?</p></li>
+<li><p>Write a function called area_circle, which takes one argument radius. The function should return the area of the circle, as a floating point number. Then add one line to the function, using string formatting, so that it additionally prints a helpful sentence of the form “The area of a circle of radius 1.0 is 3.14159.” (depending on the radius and the area it computes).</p></li>
+<li><p>Write a function called factorial, which takes one argument called <code class="docutils literal notranslate"><span class="pre">n</span></code>.  The function should return the factorian of <code class="docutils literal notranslate"><span class="pre">n</span></code> when <code class="docutils literal notranslate"><span class="pre">n</span></code> is a positive integer.  Don’t worry about what happens when <code class="docutils literal notranslate"><span class="pre">n</span></code> is zero, or a bad input.  Don’t use recursion (if you know it) – just use a for loop.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code> is an example of a “string method”.  Another neat one is <code class="docutils literal notranslate"><span class="pre">replace</span></code>.  Try <code class="docutils literal notranslate"><span class="pre">&quot;Python&quot;.replace(&quot;yth&quot;,&quot;arag&quot;)</span></code> to see what it does.</p></li>
+<li><p>Try the formatting codes <code class="docutils literal notranslate"><span class="pre">%</span></code> and <code class="docutils literal notranslate"><span class="pre">E</span></code> (instead of <code class="docutils literal notranslate"><span class="pre">f</span></code>) for a floating point number.  What do they do?</p></li>
+<li><p>Can you think of a reason you might want to have a function with <em>no</em> arguments?</p></li>
+<li><p>Create a function <code class="docutils literal notranslate"><span class="pre">my_abs(x)</span></code> which outputs the absolute value of the argument <code class="docutils literal notranslate"><span class="pre">x</span></code>.  (Note that Python already has a built-in <code class="docutils literal notranslate"><span class="pre">abs(x)</span></code> function).</p></li>
+<li><p>Modify the <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> function so that it prints a message <code class="docutils literal notranslate"><span class="pre">Number</span> <span class="pre">too</span> <span class="pre">big</span></code> and returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if the input argument is bigger than one million.  (Note that <code class="docutils literal notranslate"><span class="pre">None</span></code> is a Python reserved word.  You can use the one-line statement <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">None</span></code>.)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Checks whether the argument n is a prime number.</span>
+<span class="sd">    Uses a brute force search for factors between 1 and n.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>  <span class="c1"># the list of numbers 2,3,...,n-1.</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># is n divisible by j?</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2"> is a factor of </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</li>
+<li><p>There’s a special exception called <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>.  When do you think this occurs?  Try to make it occur!  Can you think of a time when you might want to raise this exception yourself?</p></li>
+<li><p>Make the <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> function from Exercise 8 safer by raising a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> or a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> when a “bad” input occurs.</p></li>
+<li><p>Modify the <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> function from Exercise 8 by using a while loop instead of <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">j</span> <span class="pre">in</span> <span class="pre">range(2,n):</span></code>.  Hint:  the function should contain the lines <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">=</span> <span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">j</span> <span class="pre">&lt;</span> <span class="pre">n:</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">=</span> <span class="pre">j</span> <span class="pre">+</span> <span class="pre">1</span></code> in various places.  Why might this be an improvement from the for loop?  Can you look for factors within a smaller range?</p></li>
+<li><p>Write a Python function <code class="docutils literal notranslate"><span class="pre">thrarity</span></code> which takes an argument <code class="docutils literal notranslate"><span class="pre">n</span></code>, and outputs the string <code class="docutils literal notranslate"><span class="pre">threeven</span></code> if <code class="docutils literal notranslate"><span class="pre">n</span></code> is a multiple of three, or <code class="docutils literal notranslate"><span class="pre">throdd</span></code> is <code class="docutils literal notranslate"><span class="pre">n</span></code> is one more than a multiple of three, or <code class="docutils literal notranslate"><span class="pre">thrugly</span></code> if <code class="docutils literal notranslate"><span class="pre">n</span></code> is one less than a multiple of three.  Example:  <code class="docutils literal notranslate"><span class="pre">thrarity(31)</span></code> should output <code class="docutils literal notranslate"><span class="pre">throdd</span></code> and <code class="docutils literal notranslate"><span class="pre">thrarity(44)</span></code> should output <code class="docutils literal notranslate"><span class="pre">thrugly</span></code>.  Hint:  study the <code class="docutils literal notranslate"><span class="pre">if</span></code>/<code class="docutils literal notranslate"><span class="pre">elif</span></code> syntax at <a class="reference external" href="https://docs.python.org/3/tutorial/controlflow.html#if-statements">the official Python tutorial</a>.</p></li>
+<li><p>Write a Python function <code class="docutils literal notranslate"><span class="pre">sum_of_squares(n)</span></code> which finds and prints a pair of natural numbers <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, such that <span class="math notranslate nohighlight">\(x^2 + y^2 = n\)</span>.  The function should use a brute force search and return <code class="docutils literal notranslate"><span class="pre">None</span></code> if no such pair of numbers <span class="math notranslate nohighlight">\(x,y\)</span> exists.  Explore which natural numbers can be expressed as sums of two squares. Hint:  look at prime numbers first!</p></li>
+<li><p>Write a function <code class="docutils literal notranslate"><span class="pre">gamma(n)</span></code> which takes a positive integer n as input, and outputs the difference between the harmonic sum <span class="math notranslate nohighlight">\(\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}\)</span> and the natural logarithm <span class="math notranslate nohighlight">\(\log(n)\)</span>.  Use <a class="reference external" href="https://numpy.org/doc/stable/"><code class="docutils literal notranslate"><span class="pre">numpy</span></code></a> to compute the logarithm, by using the command <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">numpy</span> <span class="pre">import</span> <span class="pre">log</span></code> in a separate cell.  Approximate <span class="math notranslate nohighlight">\(\gamma(n)\)</span> as <span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span>.  How large does <span class="math notranslate nohighlight">\(n\)</span> need to be to get five digits of precision on this limit?  Can you prove that the limit <span class="math notranslate nohighlight">\(\lim_{n \rightarrow \infty} \gamma(n)\)</span> exists?</p></li>
+<li><p>Modify the <code class="docutils literal notranslate"><span class="pre">Euclidean_algorithm</span></code> function to create a function which returns the <em>number of steps</em> that the Euclidean algorithm requires, i.e., the number of divisions-with-remainder.  How does the number of steps compare to the size of the input numbers?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Euclidean_algorithm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+<span class="n">dividend</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">divisor</span> <span class="o">=</span> <span class="n">b</span>
+<span class="k">while</span> <span class="n">divisor</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>   <span class="c1"># Recall that != means &quot;is not equal to&quot;.</span>
+    <span class="n">quotient</span> <span class="o">=</span> <span class="n">dividend</span> <span class="o">//</span> <span class="n">divisor</span>
+    <span class="n">remainder</span> <span class="o">=</span> <span class="n">dividend</span> <span class="o">%</span> <span class="n">divisor</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dividend</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">quotient</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">divisor</span><span class="si">}</span><span class="s2">) + </span><span class="si">{</span><span class="n">remainder</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">dividend</span> <span class="o">=</span> <span class="n">divisor</span>  
+    <span class="n">divisor</span> <span class="o">=</span> <span class="n">remainder</span>
+</pre></div>
+</div>
+</li>
+<li><p>When <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are integers, <span class="math notranslate nohighlight">\(GCD(a,b) \cdot LCM(a,b) = ab\)</span>.  Use this fact to write an LCM-function.  Try to make your function output only integers (not floats) and behave in a good way even if <span class="math notranslate nohighlight">\(a,b\)</span> are zero.</p></li>
+<li><p>Challenge:  Write a function <code class="docutils literal notranslate"><span class="pre">approximate_e(n)</span></code> which approximates <span class="math notranslate nohighlight">\(e\)</span> with a maximum error of <span class="math notranslate nohighlight">\(10^{-n}\)</span>.  (You can assume <span class="math notranslate nohighlight">\(n &lt; 1000\)</span> if necessary.)  Try a while loop and <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">mpmath</span></code>.  Back up your work often!</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-computing-with-python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Computing with Python:  an Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03-lists.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Lists</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-python-functions">3.1. Getting started with Python functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-statements">3.2. Control statements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-errors-by-raising-exceptions">3.3. Handling errors by raising exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops-and-implementation-of-the-eucidean-algorithm">3.4. While loops and implementation of the Eucidean algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-euclidean-algorithm-with-a-while-loop">3.4.1. The Euclidean algorithm with a while loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-and-explorations">3.5. Exercises and explorations</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marty Weissman and Suzana Șerboi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+     <div style="text-align: left;">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
